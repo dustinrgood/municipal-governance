@@ -297,11 +297,12 @@ Use them together:
 ## Using Connected Tools
 
 - Use web search for best practice research and peer community examples
-- When connected tools are unavailable, work from uploaded documents and web search
+- Use `document-management` for prior analyses and staff reports when Box access is authenticated
+- When connected tools are unavailable or unauthenticated, work from uploaded documents and official web sources. Do not imply prior analyses, staff reports, or historical decisions were reviewed unless they were actually retrieved.
 
-**Planned connectors** (not yet available — plugin works without these):
-- `document-management` — prior analyses and staff reports
-- `agenda-management` — historical decisions and precedents
+**Optional and planned connectors** (plugin works without these):
+- `document-management` (optional/configured when authenticated) — prior analyses and staff reports
+- `agenda-management` (planned; not yet implemented in this plugin) — historical decisions and precedents
 
 ## Municipal Configuration
 
@@ -321,6 +322,11 @@ When producing a policy analysis, use this structure:
 ## Executive Summary
 [2-3 paragraph summary]
 
+## Source and Confidence Notes
+- Municipal documents reviewed: [list or "none available"]
+- External sources reviewed: [municipal league / peer city / academic / web]
+- Claims requiring verification: [short list of Medium/Low confidence legal, fiscal, implementation, or stakeholder claims]
+
 ## Problem Statement
 [Clear articulation of the issue]
 
@@ -334,8 +340,8 @@ When producing a policy analysis, use this structure:
 **Implementation**: [What it would take]
 **Pros**: [List]
 **Cons**: [List]
-**Fiscal Impact**: [Estimate]
-**Examples**: [Peer communities using this approach]
+**Fiscal Impact**: [Estimate] *(Confidence: [High/Medium/Low]; provenance: [source])*
+**Examples**: [Peer communities using this approach] *(Confidence: [High/Medium/Low]; provenance: [source])*
 
 ### Option 2: [Name]
 [Same structure]
@@ -370,7 +376,7 @@ When producing a policy analysis, use this structure:
 
 ## Quality Standards
 
-- All claims should be sourced
+- All decision-relevant claims should include source, confidence, and provenance where practical
 - Options should be genuinely viable (not strawmen)
 - Trade-offs should be presented fairly
 - Analysis should be objective, not advocacy

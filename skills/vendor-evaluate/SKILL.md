@@ -15,6 +15,8 @@ description: >
 
 **Before providing procurement guidance, you MUST read `state-references/{STATE}.md`** (where {STATE} is the state abbreviation from `municipal.local.md`, e.g., `state-references/IL.md` for Illinois) for jurisdiction-specific procurement thresholds, competitive bidding requirements, and cooperative purchasing authorities.
 
+Check the state reference freshness metadata (`last_verified`, `freshness_window_days`, `verified_against`) before relying on procurement thresholds or public-records guidance. If the reference is stale, missing, or lacks metadata, treat it as background only and recommend verification against current statutes, local procurement ordinances, or municipal attorney/staff review.
+
 **Key items from state reference**: Competitive bidding dollar thresholds (e.g., Illinois requires competitive bidding above $25,000 for public works per 65 ILCS 5/8-9-1; technology purchases may have different thresholds or more municipal discretion), joint purchasing enabling statutes, cooperative purchasing programs.
 
 Analyze a municipal vendor contract, decompose what's being purchased into component capabilities, assess lock-in risk, and produce a technical feasibility spec for open-source alternatives.
@@ -60,7 +62,13 @@ Check `municipal.local.md` for:
 - Policy priorities related to technology, transparency, or digital services
 - Fiscal impact thresholds for classification
 
-### 2. Contract Parse
+### 2. Load State Reference and Local Procurement Rules
+
+Use the state from `municipal.local.md` to load `state-references/{STATE}.md`, then inspect freshness metadata before applying procurement thresholds, cooperative purchasing authority, public-records implications, or open-meetings guidance.
+
+Also check local procurement ordinances through `municipal-code` when available. If `municipal-code` is unavailable, ask the user for local procurement code excerpts or flag local procurement-rule conclusions as requiring manual verification.
+
+### 3. Contract Parse
 
 Extract from the uploaded document(s):
 
@@ -96,7 +104,7 @@ Extract from the uploaded document(s):
 - Why this vendor was selected
 - Procurement exception justifications
 
-### 3. Vendor Research
+### 4. Vendor Research
 
 Fetch the vendor's public website and any available product documentation to understand:
 
@@ -107,9 +115,9 @@ Fetch the vendor's public website and any available product documentation to und
 - Client base (how many municipalities? what sizes?)
 - Any public information about outages, complaints, or limitations
 
-Compare the vendor's current marketing claims against what the contract actually delivers. Note any gaps — features the vendor now advertises that aren't in the municipality's contract or deployment.
+Compare the vendor's current marketing claims against what the contract actually delivers. Note any gaps — features the vendor now advertises that aren't in the municipality's contract or deployment. If web research is unavailable, do not infer current product capabilities; mark vendor-current-state findings as unverified.
 
-### 4. Technical Decomposition
+### 5. Technical Decomposition
 
 Break the vendor's deliverable into discrete functional components. For each component, assess:
 
@@ -128,7 +136,7 @@ Break the vendor's deliverable into discrete functional components. For each com
 - **Proprietary**: Genuinely unique vendor capability that would be difficult to replicate
 - **Markup**: Vendor is reselling or wrapping a third-party service (AI model API, SMS gateway, cloud hosting) at a premium
 
-### 5. Build Feasibility Assessment
+### 6. Build Feasibility Assessment
 
 For each component rated Low or Medium complexity, produce a technical spec:
 
@@ -150,9 +158,9 @@ Roll up the component specs into an overall build feasibility summary:
 | Ongoing maintenance estimate | [X hours/month] |
 | Skill level required | [Technically capable staff / Developer needed / Specialized expertise] |
 | Key risk | [The hardest part and why] |
-| Confidence | [High/Medium/Low — basis] |
+| Confidence / Provenance | [High/Medium/Low; source or basis] |
 
-### 6. Cost Comparison
+### 7. Cost Comparison
 
 Present a clear cost comparison across the contract term:
 
@@ -171,7 +179,7 @@ Present a clear cost comparison across the contract term:
 - Opportunity cost of staff learning curve
 - Potential cost of switching from vendor mid-contract
 
-### 7. Lock-In Assessment
+### 8. Lock-In Assessment
 
 Evaluate vendor lock-in using the standard three-tier system:
 
@@ -197,7 +205,7 @@ Evaluate vendor lock-in using the standard three-tier system:
 - Municipality retains all data and configurations at contract end
 - Vendor is one of multiple providers with compatible products
 
-### 8. Governance Framework Overlay (Optional)
+### 9. Governance Framework Overlay (Optional)
 
 **Include this section only if the user opted in during scoping.**
 
@@ -227,7 +235,7 @@ For each layer of the Trust Stack, assess whether the deployment approach meets 
 
 *The Verifiability Framework and Trust Stack are open governance frameworks published by CivicWork. Learn more at civicwork.ai.*
 
-### 9. Replacement Roadmap
+### 10. Replacement Roadmap
 
 Reference the `vendor-alternatives` skill to identify the software category and produce a replacement roadmap. This section transforms the technical build feasibility spec into plain-language, actionable guidance.
 
@@ -247,7 +255,9 @@ Reference the `vendor-alternatives` skill to identify the software category and 
 
 **Always include the "When to NOT Replace" assessment** — even for Tier 1 categories, there may be reasons to stay with the vendor (staff capacity, migration risk, remaining contract term, integration dependencies). Be honest about these.
 
-### 10. Generate Evaluation Report
+### 11. Generate Evaluation Report
+
+For decision-relevant claims, include confidence and provenance inline. Tag contract terms, procurement thresholds, cost projections, build estimates, open-source alternative fit, public-records implications, and replacement recommendations with `High/Medium/Low` and a concise source such as `contract p.12`, `staff report`, `state-reference/IL last_verified 2026-03-01`, `municipal-code`, `vendor website`, `GitHub project`, `web - verify`, or `model inference`.
 
 ## Output Format
 
@@ -261,6 +271,13 @@ Reference the `vendor-alternatives` skill to identify the software category and 
 **Contract Term**: [X years]
 **Evaluation Date**: [Date]
 **Evaluation Type**: [Renewal / New Procurement / Exploratory / Build-vs-Buy]
+
+## Source and Confidence Notes
+- Contract source: [uploaded contract / staff report / RFP]
+- State procurement reference: [state-reference/XX last_verified YYYY-MM-DD / stale / unavailable]
+- Local procurement source: [municipal-code / uploaded code excerpt / not verified]
+- Vendor-current-state sources: [vendor docs / website / not verified]
+- Claims requiring verification: [short list of Medium/Low confidence items]
 
 ---
 
@@ -347,7 +364,7 @@ Reference the `vendor-alternatives` skill to identify the software category and 
 | Ongoing maintenance | [X hours/month] |
 | Skill level required | [Description] |
 | Key technical risk | [The hardest part] |
-| Confidence | [High/Medium/Low — basis] |
+| Confidence / Provenance | [High/Medium/Low; source or basis] |
 
 ---
 
@@ -368,16 +385,16 @@ Reference the `vendor-alternatives` skill to identify the software category and 
 ## Lock-In Assessment
 
 ### Data Ownership
-[Assessment of data ownership terms] *(Rating: 🔴/🟡/🟢)*
+[Assessment of data ownership terms] *(Rating: 🔴/🟡/🟢; Confidence: [High/Medium/Low]; provenance: [source])*
 
 ### Data Portability
-[Can you get your data out? In what format?] *(Rating: 🔴/🟡/🟢)*
+[Can you get your data out? In what format?] *(Rating: 🔴/🟡/🟢; Confidence: [High/Medium/Low]; provenance: [source])*
 
 ### API Access
-[Does the vendor provide an API? Is it documented?] *(Rating: 🔴/🟡/🟢)*
+[Does the vendor provide an API? Is it documented?] *(Rating: 🔴/🟡/🟢; Confidence: [High/Medium/Low]; provenance: [source])*
 
 ### Contract Terms
-[Renewal, termination, escalation provisions] *(Rating: 🔴/🟡/🟢)*
+[Renewal, termination, escalation provisions] *(Rating: 🔴/🟡/🟢; Confidence: [High/Medium/Low]; provenance: [source])*
 
 ### Switching Cost Estimate
 [What would it actually take to leave this vendor?]
@@ -506,6 +523,8 @@ Reference the `vendor-alternatives` skill to identify the software category and 
 - [Specific cost projection and its assumptions]
 - [Build estimate and skill requirement assessment]
 - [Contract term interpretation that should be confirmed by municipal attorney]
+- [Procurement-threshold or cooperative-purchasing conclusion based on stale, missing, or incomplete state/local rules]
+- [FOIA/public-records implication for vendor-held data]
 
 **Recommended verification steps:**
 - [ ] Municipal attorney review of data ownership and termination terms
@@ -537,6 +556,7 @@ Contract terms should be reviewed by the municipal attorney.*
 - Always include caveats on build estimates — they are estimates, not quotes.
 - When the vendor's product includes AI/ML components, note what underlying model(s) are used and whether the vendor is model-locked or model-agnostic.
 - Flag any contract terms that would affect FOIA compliance — vendor-held data about public interactions may be subject to public records requirements.
+- Do not rely on stale or missing state references for procurement thresholds, joint purchasing authority, or public-records guidance; mark those conclusions for attorney/staff verification
 - The governance framework overlay is always opt-in. Never include it unless the user requested it.
 - Build feasibility produces specs, not code. The plugin recommends — humans decide.
 - The Replacement Roadmap must be honest about Tier 3/4 categories. Recommending replacement for everything destroys credibility. When the vendor is the right answer, say so and redirect to contract negotiation.

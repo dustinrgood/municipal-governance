@@ -51,7 +51,18 @@ Check `municipal.local.md` for:
 - Population/demographics (for peer selection)
 - Existing related policies
 
-### 3. Research Framework
+### 3. Load State Reference and Check Freshness
+
+When the research includes state-law, preemption, home rule, compliance, funding, or procedural claims, read `state-references/{STATE}.md` using the state from `municipal.local.md`.
+
+Check the state reference metadata:
+- `last_verified`
+- `freshness_window_days`
+- `verified_against`
+
+If the state reference is missing, lacks metadata, or is stale, treat it as background only. Mark state-law conclusions as requiring verification against current statutes, state agency guidance, municipal league resources, or municipal attorney review before use in a decision.
+
+### 4. Research Framework
 
 Structure research across these dimensions:
 
@@ -85,12 +96,14 @@ Structure research across these dimensions:
 - What concerns are raised?
 - What solutions are proposed?
 
-### 4. Conduct Research
+### 5. Conduct Research
 
 **Internal Sources** (when connected):
 - `municipal-code`: Current code provisions
 - `document-management`: Prior staff reports, studies
-- `agenda-management`: Historical council actions
+- `agenda-management`: Historical council actions, if a future agenda connector is installed
+
+If connectors are unavailable or unauthenticated, use uploaded documents, official municipal websites, or web sources and clearly mark the gap. Do not imply that prior staff reports, studies, or council actions were reviewed unless they were actually retrieved.
 
 **External Sources** (via web search):
 - **State municipal league** (e.g., Illinois Municipal League — the primary resource for elected officials; provides model ordinances, fact sheets, legal assistance, NEO workshops, and legislative monitoring). IML is typically more relevant for elected officials than ICMA, which primarily serves appointed professional managers.
@@ -102,7 +115,7 @@ Structure research across these dimensions:
 - Academic publications
 - News coverage
 
-### 5. Synthesize Findings
+### 6. Synthesize Findings
 
 Organize findings by:
 - What we know
@@ -110,7 +123,9 @@ Organize findings by:
 - What the trade-offs are
 - What we still need to learn
 
-### 6. Assess Analysis Boundaries
+For decision-relevant claims, include confidence and provenance inline. Tag legal, fiscal, peer-practice, implementation, and stakeholder claims with `High/Medium/Low` and concise sources such as `state-reference/IL last_verified 2026-03-01`, `municipal-code`, `staff report p.4`, `NLC report`, `peer city ordinance`, `web - verify`, or `model inference`.
+
+### 7. Assess Analysis Boundaries
 
 Before generating the report, review your own work and identify:
 - **Untested assumptions**: Where did you make a judgment call that a second perspective might challenge? (e.g., "I assumed this state statute applies here, but preemption analysis can be nuanced")
@@ -122,7 +137,7 @@ For **Quick scan** and **Exploratory** modes: Skip this step. The output is info
 
 For **Decision-focused** and **Comprehensive** modes: Populate the "Analysis Boundaries" section in the output with specific items from this review. Be concrete — "the fiscal projection assumes stable property tax revenue" is useful; "this analysis may contain errors" is not.
 
-### 7. Generate Research Report
+### 8. Generate Research Report
 
 ## Output Format
 
@@ -143,6 +158,12 @@ For **Decision-focused** and **Comprehensive** modes: Populate the "Analysis Bou
 
 [Clear statement of the question being addressed]
 
+## Source and Confidence Notes
+- State reference: [state-reference/XX last_verified YYYY-MM-DD / stale / unavailable]
+- Municipal documents reviewed: [list or "none available"]
+- Connector sources used: [municipal-code / document-management / none]
+- Claims requiring verification: [short list of Medium/Low confidence items]
+
 ## Background
 
 ### Current Situation
@@ -156,7 +177,7 @@ For **Decision-focused** and **Comprehensive** modes: Populate the "Analysis Bou
 ## Legal Framework
 
 ### State Law
-[Relevant state statutes and requirements]
+[Relevant state statutes and requirements] *(Confidence: [High/Medium/Low]; provenance: [source])*
 
 ### Federal Requirements
 [Any applicable federal law]
@@ -312,6 +333,89 @@ acknowledging this is staff-level research, not recommendation]
 Recommendations should be developed through the normal staff process.*
 ```
 
+## Step 9: Offer PolicyAide Escalation (Decision-Focused and Comprehensive Only)
+
+After generating the research report in **Decision-focused** or **Comprehensive** mode, review your own analysis boundaries and offer escalation to PolicyAide's multi-agent adversarial pipeline:
+
+> "This research identified **[N] tensions or untested assumptions** that would benefit from multi-perspective adversarial deliberation:
+>
+> [List the specific items from the Analysis Boundaries section — e.g.:]
+> - Preemption analysis assumes home rule authority — needs adversarial challenge
+> - Fiscal estimate based on peer city data, not local staff modeling
+> - Stakeholder opposition arguments not stress-tested
+>
+> **Would you like to escalate this to PolicyAide?** PolicyAide will:
+> - Run adversarial debates between policy options across multiple AI perspectives
+> - Stress-test every claim through structured opposition
+> - Produce a tournament-ranked analysis with ELO ratings
+>
+> This skips PolicyAide's expensive web research step (~$1.50 savings) because the research groundwork is already done here.
+>
+> **[Yes, escalate to PolicyAide] / [No, this research is sufficient]**"
+
+If the user accepts escalation:
+
+1. **Check for plugin token** in `official.local.md` under PolicyAide Link > Link Token
+   - If not linked: "To send this to PolicyAide, you'll need to link your plugin first. Run `/municipal-governance:sync-to-policyaide` to set that up, then come back here."
+   - If linked: proceed
+
+2. **Build the research_preseed payload**:
+   ```json
+   {
+     "handoffType": "research_preseed",
+     "pluginVersion": "0.5.0",
+     "payload": {
+       "topic": "[the research topic]",
+       "researchIntent": "[mapped from depth mode: decision-focused → vote_prep, comprehensive → explore]",
+       "researchOutput": {
+         "executiveSummary": "[from generated report]",
+         "legalFramework": "[from Legal Framework section]",
+         "peerPractices": "[from What Other Communities Are Doing section]",
+         "policyOptions": "[from Policy Options section, structured]",
+         "keyConsiderations": "[from Key Considerations section]",
+         "stakeholderPerspectives": "[from Stakeholder Perspectives section]",
+         "gapsAndUncertainties": "[from Gaps and Uncertainties section]"
+       },
+       "tensionsIdentified": [
+         "[specific tension 1 from Analysis Boundaries]",
+         "[specific tension 2]"
+       ],
+       "stateContext": "[relevant state law references used in this research]",
+       "standingDocReferences": {
+         "strategicPlan": "[if referenced — title and relevant goal]",
+         "comprehensivePlan": "[if referenced — title and relevant section]",
+         "budget": "[if referenced — title and relevant fund]"
+       },
+       "pluginResearchDepth": "[quick_scan | decision_focused | comprehensive | exploratory]"
+     },
+     "municipalityContext": {
+       "name": "[from municipal.local.md]",
+       "state": "[from municipal.local.md]"
+     }
+   }
+   ```
+
+3. **Review payload and confirm send**:
+   - Show the user a concise payload summary before sending, including topic, research depth, tensions identified, state context, standing document references, and municipality context.
+   - Do not display the plugin token.
+   - Exclude privileged, confidential, private constituent, or campaign-strategy material unless the user explicitly approves that exact inclusion.
+   - Ask for explicit confirmation before any POST leaves the workspace. If the user does not confirm, stop and keep the payload local.
+
+4. **Send via web_fetch** to `https://app.civicwork.ai/api/plugin/handoff`:
+   ```
+   Method: POST
+   Headers:
+     Content-Type: application/json
+     X-Plugin-Token: [from official.local.md]
+   Body: [payload above]
+   ```
+
+5. **Report result**:
+   - Success: "Research escalated to PolicyAide! Check app.civicwork.ai/policy-aide — you'll see a banner to start the adversarial analysis using this research as context."
+   - Failure: Report the error and suggest checking the plugin link.
+
+**Skip this step entirely for Quick Scan and Exploratory modes** — those are informational and don't warrant multi-agent deliberation.
+
 ## Skills Referenced
 
 - `policy-evaluation` — Bardach framework, evaluation criteria, decision matrices
@@ -336,7 +440,9 @@ When in doubt, default to **Decision-focused** — it serves the most common use
 - Match depth to the mode selected in scoping — a quick scan should be one page, not ten
 - Always cite sources
 - Distinguish between facts, analysis, and opinion
-- Flag areas of uncertainty with confidence indicators (see CLAUDE.md)
+- Flag areas of uncertainty with confidence/provenance indicators (see CLAUDE.md)
+- Before sending research to PolicyAide, show a payload summary and require explicit user confirmation
+- Keep official policy research separate from campaign strategy, electioneering, and private constituent details unless the user explicitly requests a separate non-governmental note
 - Suggest follow-up research when warranted
 - Include contact information for peer communities when possible
 

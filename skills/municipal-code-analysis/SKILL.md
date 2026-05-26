@@ -193,9 +193,9 @@ When the `municipal-code` connection is not available:
 - Suggest the user verify current code provisions via their municipality's code website
 - Cite section numbers based on available information and flag them for verification
 
-**Planned connectors** (not yet available — plugin works without these):
-- `agenda-management` — legislation history
-- `document-management` — staff reports and supporting materials
+**Optional and planned connectors** (plugin works without these):
+- `document-management` (optional/configured when authenticated) — staff reports and supporting materials
+- `agenda-management` (planned; not yet implemented in this plugin) — legislation history
 
 ## Municipal Configuration
 
@@ -228,17 +228,23 @@ When producing a code compliance review, use this structure:
 ## Subject of Review
 [Description of what's being reviewed]
 
+## Source and Confidence Notes
+- Code source: [municipal-code / uploaded code excerpt / municipal website / user-provided citation]
+- Code currency: [current-through date if available / unknown]
+- State reference: [state-reference/XX last_verified YYYY-MM-DD / stale / unavailable]
+- Claims requiring verification: [short list of Medium/Low confidence code or legal conclusions]
+
 ## Relevant Code Sections
 
 ### Primary Sections
-| Section | Title | Relevance |
-|---------|-------|-----------|
-| [X.XX.XXX] | [Title] | [Why relevant] |
+| Section | Title | Relevance | Confidence / Provenance |
+|---------|-------|-----------|-------------------------|
+| [X.XX.XXX] | [Title] | [Why relevant] | [High/Med/Low; source] |
 
 ### Supporting Sections
-| Section | Title | Relevance |
-|---------|-------|-----------|
-| [X.XX.XXX] | [Title] | [Why relevant] |
+| Section | Title | Relevance | Confidence / Provenance |
+|---------|-------|-----------|-------------------------|
+| [X.XX.XXX] | [Title] | [Why relevant] | [High/Med/Low; source] |
 
 ### Definitions (from [Section])
 - **[Term 1]**: [Definition]
@@ -252,10 +258,10 @@ When producing a code compliance review, use this structure:
 - **Home rule considerations**: [If applicable]
 
 ### Requirements
-| Requirement | Code Section | Status | Notes |
-|-------------|--------------|--------|-------|
-| [Requirement 1] | [Section] | ✅/❌/⚠️ | [Details] |
-| [Requirement 2] | [Section] | ✅/❌/⚠️ | [Details] |
+| Requirement | Code Section | Status | Notes | Confidence / Provenance |
+|-------------|--------------|--------|-------|-------------------------|
+| [Requirement 1] | [Section] | ✅/❌/⚠️ | [Details] | [High/Med/Low; source] |
+| [Requirement 2] | [Section] | ✅/❌/⚠️ | [Details] | [High/Med/Low; source] |
 
 ### Procedural Requirements
 - [ ] [Requirement 1] - [Section reference]
@@ -288,7 +294,7 @@ When producing a code compliance review, use this structure:
 
 ## Compliance Determination
 
-**Overall Status**: [Compliant / Non-Compliant / Requires Modification]
+**Overall Status**: [Compliant / Non-Compliant / Requires Modification] *(Confidence: [High/Medium/Low]; provenance: [source])*
 
 **Conditions for Compliance**:
 1. [Condition 1]
@@ -311,6 +317,7 @@ When producing a code compliance review, use this structure:
 
 - Cite specific section numbers
 - Quote operative language when important
+- Include confidence and provenance for authority, conflict, compliance, and procedural conclusions
 - Note version/date of code reviewed
 - Identify ambiguities honestly
 - Flag items requiring attorney review

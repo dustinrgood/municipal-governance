@@ -22,6 +22,8 @@ Most municipal governing bodies operate under Robert's Rules of Order Newly Revi
 
 **Important**: In states with open meetings laws (all 50 states), the **state open meetings act is the controlling legal framework** for council meeting procedures — not Robert's Rules. RONR is supplemental: it governs areas where state law is silent (motion procedures, debate management, voting methods). When RONR and state law conflict, state law prevails. See the state reference in `state-references/` for applicable open meetings requirements.
 
+Before giving compliance-ready guidance on notice, closed session, public comment, voting, or other state-law procedural requirements, check the state reference freshness metadata (`last_verified`, `freshness_window_days`, `verified_against`). If the reference is missing, stale, or lacks metadata, treat it as background and recommend clerk or municipal attorney verification.
+
 Always check `municipal.local.md` for the specific procedural rules adopted by your governing body.
 
 ## Small Board Rules (RONR 12th Ed., §49)

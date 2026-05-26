@@ -15,6 +15,8 @@ description: >
 
 **Before providing procurement guidance, you MUST read `state-references/{STATE}.md`** (where {STATE} is the state abbreviation from `municipal.local.md`, e.g., `state-references/IL.md` for Illinois) for jurisdiction-specific procurement thresholds, competitive bidding requirements, and cooperative purchasing authorities.
 
+Check the state reference freshness metadata (`last_verified`, `freshness_window_days`, `verified_against`) before relying on procurement thresholds, competitive bidding requirements, joint purchasing authority, or public-records implications. If the reference is missing, stale, or lacks metadata, treat it as background only and recommend verification against current statutes, local procurement ordinances, staff, or municipal attorney review.
+
 **Key items from state reference**: Competitive bidding dollar thresholds, joint purchasing enabling statutes, cooperative purchasing programs. For small municipalities (~15,000 population), cooperative purchasing through state contracts and joint purchasing programs is typically the most cost-effective procurement strategy.
 
 ## Overview
@@ -290,11 +292,11 @@ Use `municipal-code` to look up procurement-related code provisions. See the `mu
 
 Use web search to research vendors — product capabilities, pricing tiers, client base, and recent news about acquisitions or product changes.
 
-When connected tools are unavailable, work from uploaded contract documents and web search.
+When connected tools are unavailable or unauthenticated, work from uploaded contract documents and web search. Do not imply prior contracts, procurement documents, or historical approvals were reviewed unless they were actually retrieved.
 
-**Planned connectors** (not yet available — plugin works without these):
-- `document-management` — prior contracts and procurement documents
-- `agenda-management` — historical contract approvals
+**Optional and planned connectors** (plugin works without these):
+- `document-management` (optional/configured when authenticated) — prior contracts and procurement documents
+- `agenda-management` (planned; not yet implemented in this plugin) — historical contract approvals
 
 ## Municipal Configuration
 

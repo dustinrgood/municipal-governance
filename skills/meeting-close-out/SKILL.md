@@ -89,6 +89,8 @@ Write the close-out entry to `briefing-book.md`:
    - Remove items that are fully resolved (passed and implemented, or withdrawn)
 3. **Council Dynamics section**: Update if new voting pattern data was provided
 
+Before writing, treat `briefing-book.md` as potentially public-record-adjacent. Do not record closed-session content, privileged legal advice, confidential constituent casework, private personnel details, campaign strategy, or personal political notes unless the user explicitly requests a separate non-governmental note outside the briefing book.
+
 ## Output Format
 
 Display the close-out summary to the user before writing to the briefing book, so they can correct anything:
@@ -136,6 +138,7 @@ After the user confirms (or corrects), write to `briefing-book.md`.
 - If the user provides detailed notes, capture the detail. If they're brief, capture what they give and move on. Any close-out is better than no close-out.
 - Roll call votes are the most valuable data point for the Council Dynamics section — encourage the user to include them when they know them, but don't require it.
 - If a prior meeting-prep or agenda-synthesis session log exists for this meeting, reference it to show what the plugin predicted vs. what happened. This builds trust and calibrates future analyses.
+- Keep government meeting records separate from campaign or personal political notes. The briefing book should capture official actions, public discussion themes, and follow-ups, not electioneering strategy.
 - The close-out should take 5-10 minutes max. If it's taking longer, the user is providing too much detail — that's great, but keep the briefing book entries concise. Store the detail in the session log, keep the meeting record tight.
 
 ## Related Skills

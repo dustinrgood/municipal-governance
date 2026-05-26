@@ -34,7 +34,21 @@ Check `municipal.local.md` for:
 - Policy priorities
 - Fund balance policies
 
-### 2. Scope the Analysis
+### 2. Load State Reference and Financial Source Context
+
+When the analysis involves levy limits, tax caps, budget adoption deadlines, debt limits, public finance statutes, state aid, or peer-comparison data sources, read `state-references/{STATE}.md` using the state from `municipal.local.md`.
+
+Check `last_verified`, `freshness_window_days`, and `verified_against`. If the state reference is missing, lacks metadata, or is stale, treat state-law and state-data-source guidance as background only and flag those conclusions for finance staff, clerk, or attorney verification.
+
+Identify the source for each major number before analyzing it:
+- Adopted or proposed budget
+- Annual financial report or audit
+- Staff report or budget memo
+- State comptroller / state financial database
+- User-provided estimate
+- Model inference
+
+### 3. Scope the Analysis
 
 Ask the user what they need before proceeding:
 
@@ -74,7 +88,7 @@ Then confirm depth:
 - Cost projections
 - Net fiscal impact
 
-### 3. Conduct Analysis
+### 4. Conduct Analysis
 
 **Revenue Analysis**:
 - Major revenue sources and trends
@@ -102,7 +116,9 @@ Then confirm depth:
 - Debt capacity
 - Upcoming issuances
 
-### 4. Generate Analysis Report
+For decision-relevant claims, include confidence and provenance inline. Tag fiscal figures, revenue assumptions, fund balance calculations, debt metrics, peer comparisons, and legal/statutory finance constraints with `High/Medium/Low` and concise sources such as `budget p.14`, `AFR`, `staff memo`, `state-reference/IL last_verified 2026-03-01`, `state comptroller`, `web - verify`, or `model inference`.
+
+### 5. Generate Analysis Report
 
 ## Output Format
 
@@ -114,6 +130,12 @@ Then confirm depth:
 **Analysis Date**: [Date]
 **Budget Year**: [FY]
 **Prepared for**: [Requestor]
+
+## Source and Confidence Notes
+- Primary budget source: [document name/page range]
+- State finance reference: [state-reference/XX last_verified YYYY-MM-DD / stale / unavailable]
+- Peer data source: [state comptroller / ICMA / uploaded comparison / not available]
+- Numbers requiring verification: [short list of Medium/Low confidence figures]
 
 ---
 
@@ -127,14 +149,14 @@ Then confirm depth:
 
 ### Key Numbers
 
-| Metric | Amount | Change from PY |
-|--------|--------|----------------|
-| Total Budget | $[X] | [+/-X%] |
-| General Fund | $[X] | [+/-X%] |
-| Property Tax Levy | $[X] | [+/-X%] |
-| Personnel Costs | $[X] | [+/-X%] |
-| Capital Investment | $[X] | [+/-X%] |
-| Projected Fund Balance | $[X] | [X% of expenditures] |
+| Metric | Amount | Change from PY | Confidence / Provenance |
+|--------|--------|----------------|-------------------------|
+| Total Budget | $[X] | [+/-X%] | [High/Med/Low; source] |
+| General Fund | $[X] | [+/-X%] | [High/Med/Low; source] |
+| Property Tax Levy | $[X] | [+/-X%] | [High/Med/Low; source] |
+| Personnel Costs | $[X] | [+/-X%] | [High/Med/Low; source] |
+| Capital Investment | $[X] | [+/-X%] | [High/Med/Low; source] |
+| Projected Fund Balance | $[X] | [X% of expenditures] | [High/Med/Low; source] |
 
 ### Budget by Fund
 
@@ -329,6 +351,7 @@ Note: GFOA's Distinguished Budget Presentation Award underwent a major overhaul 
 - [Revenue projection assumption — e.g., "assumes X% growth based on 3-year trend"]
 - [Cost estimate basis — e.g., "personnel costs estimated from budget document, not verified against actual payroll"]
 - [Comparison methodology — e.g., "peer comparison uses published budgets, which may use different accounting treatments"]
+- [State-law or tax-limit conclusion based on stale, missing, or incomplete state reference]
 
 **Before relying on this analysis for budget decisions:**
 - [ ] Finance director review of key figures and assumptions
@@ -351,6 +374,8 @@ Contact Finance Department for clarifications.*
 
 - Tailor depth to analysis type requested
 - Always note assumptions and their basis
+- Include confidence and provenance for key budget figures, fiscal estimates, state-law constraints, and peer comparisons
+- Do not rely on stale or missing state references for levy limits, debt limits, budget deadlines, or state financial-data guidance
 - Flag items that seem unusual or require explanation
 - Compare to prior years for context
 - Note one-time items separately

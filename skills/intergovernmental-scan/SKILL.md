@@ -34,7 +34,13 @@ Check `municipal.local.md` for:
 - Policy priorities
 - Regional context (county, MPO, COG)
 
-### 2. Determine Scan Parameters
+### 2. Load State Reference and Check Freshness
+
+Read `state-references/{STATE}.md` for the current home rule, preemption, mandate, grant, and state-agency context relevant to the scan.
+
+Check `last_verified`, `freshness_window_days`, and `verified_against`. If the state reference is stale, missing, or lacks metadata, use it only as background and verify current bill status, effective dates, and preemption claims against official legislature, agency, or municipal league sources before treating them as current.
+
+### 3. Determine Scan Parameters
 
 **Scope Options**:
 - Full legislative session scan
@@ -47,7 +53,7 @@ Check `municipal.local.md` for:
 - 🟡 Significant impact likely
 - 🟢 Informational/opportunity
 
-### 3. Source Identification
+### 4. Source Identification
 
 **State Sources**:
 - State legislature website
@@ -70,7 +76,7 @@ Check `municipal.local.md` for:
 - Neighboring jurisdictions
 - Special districts
 
-### 4. Conduct Scan
+### 5. Conduct Scan
 
 For each relevant development, capture:
 - What it is (bill, rule, action)
@@ -80,7 +86,7 @@ For each relevant development, capture:
 - Required local action
 - Advocacy opportunity
 
-### 5. Categorize Findings
+### 6. Categorize Findings
 
 **Mandates**
 - New requirements on municipalities
@@ -109,7 +115,9 @@ For each relevant development, capture:
 - Federal regulations
 - Compliance requirements
 
-### 6. Generate Scan Report
+### 7. Generate Scan Report
+
+For decision-relevant claims, include confidence and provenance inline. Tag bill status, effective dates, preemption conclusions, mandate/compliance requirements, fiscal estimates, grant deadlines, and recommended local actions with `High/Medium/Low` and concise sources such as `state legislature`, `municipal league`, `state-reference/IL last_verified 2026-03-01`, `Federal Register`, `agency notice`, `web - verify`, or `model inference`.
 
 ## Output Format
 
@@ -120,6 +128,11 @@ For each relevant development, capture:
 **State**: [State]
 **Focus Areas**: [List if specific]
 **Report Date**: [Date]
+
+## Source and Confidence Notes
+- State reference: [state-reference/XX last_verified YYYY-MM-DD / stale / unavailable]
+- Current legislative sources checked: [state legislature / municipal league / Congress.gov / Federal Register]
+- Claims requiring verification: [short list of Medium/Low confidence items]
 
 ---
 
@@ -143,14 +156,14 @@ For each relevant development, capture:
 ### [Bill/Action Name]
 
 **Type**: [Mandate / Preemption / Funding / Authority]
-**Status**: [Introduced / Committee / Passed / Signed / Effective]
-**Effective Date**: [Date]
+**Status**: [Introduced / Committee / Passed / Signed / Effective] *(Confidence: [High/Medium/Low]; provenance: [source])*
+**Effective Date**: [Date] *(Confidence: [High/Medium/Low]; provenance: [source])*
 
 **What It Does**:
 [Clear description of the action]
 
 **Impact on [Municipality]**:
-[Specific local impact analysis]
+[Specific local impact analysis] *(Confidence: [High/Medium/Low]; provenance: [source])*
 
 **Required Local Action**:
 - [ ] [Action item with deadline]
@@ -280,6 +293,21 @@ For each relevant development, capture:
 - [Municipal League]: [URL]
 - [Federal Source]: [URL]
 
+## Analysis Boundaries
+<!-- Include when the scan flags 🔴 mandates, preemption risks, statutory deadlines, grant commitments, or recommended advocacy positions. Omit for a purely informational quick scan. -->
+
+*This intergovernmental scan was produced by a single AI instance using sources available at scan time.*
+
+**Items requiring verification before local action:**
+- [Bill status or effective date that should be checked against the official legislative source]
+- [Preemption or authority conclusion that should be reviewed by the municipal attorney]
+- [Fiscal or grant-match estimate that should be confirmed by finance staff]
+
+**Recommended verification steps:**
+- [ ] Confirm current status and effective dates on official state/federal sources
+- [ ] Municipal attorney review of preemption, authority, or compliance conclusions
+- [ ] Staff confirmation of implementation timeline, fiscal impact, or grant eligibility
+
 ---
 
 *Scan prepared [date]. Legislative status changes rapidly.
@@ -313,7 +341,7 @@ Verify current status before taking action.*
 
 ## Notes
 
-- **Preemption threat monitoring**: Check the state reference in `state-references/` for the current preemption landscape, including pending threats (e.g., Illinois BUILD plan: SB 4060-4064, HB 5626 proposing sweeping preemption of local land use authority). Flag preemption bills affecting local authority as high-priority items.
+- **Preemption threat monitoring**: Check the freshness-reviewed state reference in `state-references/` for the preemption landscape, then verify pending bills against official legislative sources because bill numbers and status age quickly. Flag preemption bills affecting local authority as high-priority items.
 - Use web search for current legislative status
 - Cross-reference multiple sources for accuracy
 - Note effective dates prominently

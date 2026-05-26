@@ -14,6 +14,8 @@ description: >
 
 This skill provides general frameworks for ethics, conflicts of interest, and financial disclosure compliance. **Before providing any compliance guidance, you MUST read `state-references/{STATE}.md`** (where {STATE} is the state abbreviation from `municipal.local.md`, e.g., `state-references/IL.md` for Illinois). Do not give generic "varies by state" answers when a state reference exists — read it and cite the specific statutes, filing deadlines, dollar thresholds, and penalties.
 
+Check the state reference freshness metadata (`last_verified`, `freshness_window_days`, `verified_against`) before relying on filing deadlines, gift thresholds, prohibited-interest rules, disclosure requirements, or penalties. If the reference is missing, stale, or lacks metadata, use it only as background and recommend verification with current statutes, the municipal attorney, or the relevant ethics body.
+
 **Critical**: Ethics filing deadlines, gift ban thresholds, and disclosure requirements are entirely state-specific. Failure to file on time can result in forfeiture of office in some states. Always apply the exact numbers from the state reference — do not use approximate ranges.
 
 ## Overview
@@ -183,10 +185,10 @@ Use `municipal-code` to look up local ethics ordinance provisions. See the `muni
 
 **Workflow tip**: Many municipalities have a dedicated ethics chapter — use `titles_only=true` to find it quickly, then use `get_code_structure` to browse its sections.
 
-When connected tools are unavailable, reference the state ethics statute cited in `municipal.local.md` and suggest manual verification.
+When connected tools are unavailable or unauthenticated, reference the state ethics statute cited in `municipal.local.md`, work from uploaded materials or official sources, and suggest manual verification. Do not imply financial disclosure forms or ethics opinions were reviewed unless they were actually retrieved.
 
-**Planned connectors** (not yet available — plugin works without these):
-- `document-management` — financial disclosure forms and ethics opinions
+**Optional connectors** (plugin works without this):
+- `document-management` (optional/configured when authenticated) — financial disclosure forms and ethics opinions
 
 ## Municipal Configuration
 

@@ -13,6 +13,8 @@ description: >
 
 This skill provides general frameworks for zoning and land use analysis. **Before providing any zoning or land use guidance, you MUST read `state-references/{STATE}.md`** (where {STATE} is the state abbreviation from `municipal.local.md`, e.g., `state-references/IL.md` for Illinois). Do not give generic answers when a state reference exists — read it and cite the specific enabling authority, procedural deadlines, legal standards, and court-established reasonableness tests.
 
+Check the state reference freshness metadata (`last_verified`, `freshness_window_days`, `verified_against`) before relying on enabling authority, hearing notice periods, decision deadlines, appeal windows, preemption, or court-established standards. If the reference is missing, stale, or lacks metadata, treat it as background only and recommend verification against current statutes, local counsel, planning staff, or the municipal attorney before action.
+
 **Critical for non-home-rule municipalities**: Zoning authority derives entirely from state enabling legislation. Non-home-rule municipalities can only exercise powers explicitly granted. The state reference identifies the specific statutory sections, enumerated powers, notice periods, decision deadlines, and appeal timelines that govern all zoning actions.
 
 ## Overview
@@ -298,11 +300,11 @@ Use `municipal-code` to look up zoning provisions. See the `municipal-code-analy
 
 **Workflow tip**: Use `titles_only=true` first to identify the zoning title/chapter structure, then drill into specific sections with `get_code_section`.
 
-When connected tools are unavailable, note the gap and suggest manual verification via the municipality's code website.
+When connected tools are unavailable or unauthenticated, note the gap, work from uploaded materials or official municipal sources, and suggest manual verification via the municipality's code website. Do not imply staff reports, plans, or application statuses were reviewed unless they were actually retrieved.
 
-**Planned connectors** (not yet available — plugin works without these):
-- `agenda-management` — development application status
-- `document-management` — staff reports and plans
+**Optional and planned connectors** (plugin works without these):
+- `document-management` (optional/configured when authenticated) — staff reports and plans
+- `agenda-management` (planned; not yet implemented in this plugin) — development application status
 
 ## Municipal Configuration
 

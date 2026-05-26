@@ -12,6 +12,8 @@ description: >
 
 This skill provides general frameworks for municipal finance analysis. **Before providing any fiscal analysis, you MUST read `state-references/{STATE}.md`** (where {STATE} is the state abbreviation from `municipal.local.md`, e.g., `state-references/IL.md` for Illinois). Do not give generic answers when a state reference exists — read it and cite the specific property tax mechanics, budget system options, levy deadlines, audit requirements, and pension landscape details.
 
+Check the state reference freshness metadata (`last_verified`, `freshness_window_days`, `verified_against`) before relying on levy limits, budget deadlines, audit requirements, pension details, or statutory thresholds. If the reference is missing, stale, or lacks metadata, use it only as background and recommend verification against current statutes, state comptroller/treasurer guidance, finance staff, or municipal attorney review before acting.
+
 **Critical**: Property tax limitation mechanics (e.g., Illinois PTELL limits extensions, not rates), budget system choices, pension funded ratios, and statutory funding deadlines are entirely state-specific. The state reference contains exact thresholds, deadlines, and institutional context that must be applied to any financial analysis.
 
 ## Overview
@@ -369,11 +371,11 @@ Use `municipal-code` to look up fiscal and budget-related code provisions. See t
 
 **Workflow tip**: Budget and finance provisions are often spread across multiple titles (Finance, Administration, specific enterprise funds). Use `titles_only=true` to map the relevant chapters before diving into specific sections.
 
-When connected tools are unavailable, work from uploaded budget documents.
+When connected tools are unavailable or unauthenticated, work from uploaded budget documents and official financial sources. Do not imply budget documents, CAFRs/ACFRs, or prior agenda actions were reviewed unless they were actually retrieved.
 
-**Planned connectors** (not yet available — plugin works without these):
-- `document-management` — budget documents and CAFRs
-- `agenda-management` — budget amendments, levy ordinances
+**Optional and planned connectors** (plugin works without these):
+- `document-management` (optional/configured when authenticated) — budget documents and CAFRs/ACFRs
+- `agenda-management` (planned; not yet implemented in this plugin) — budget amendments, levy ordinances
 
 ## Municipal Configuration
 
@@ -413,25 +415,30 @@ When producing a fiscal analysis, use this structure:
 ## Summary
 [Key findings in 2-3 sentences]
 
+## Source and Confidence Notes
+- Primary fiscal source: [budget / CAFR/ACFR / staff memo / user estimate]
+- State finance reference: [state-reference/XX last_verified YYYY-MM-DD / stale / unavailable]
+- Figures requiring verification: [short list of Medium/Low confidence numbers]
+
 ## The Numbers
 
 ### Costs
-| Category | One-Time | Annual Ongoing |
-|----------|----------|----------------|
-| [Item] | $[X] | $[X] |
-| **Total** | **$[X]** | **$[X]/year** |
+| Category | One-Time | Annual Ongoing | Confidence / Provenance |
+|----------|----------|----------------|-------------------------|
+| [Item] | $[X] | $[X] | [High/Med/Low; source] |
+| **Total** | **$[X]** | **$[X]/year** | [High/Med/Low; source] |
 
 ### Revenues (if applicable)
-| Source | Year 1 | Year 2 | Stabilized |
-|--------|--------|--------|------------|
-| [Source] | $[X] | $[X] | $[X] |
+| Source | Year 1 | Year 2 | Stabilized | Confidence / Provenance |
+|--------|--------|--------|------------|-------------------------|
+| [Source] | $[X] | $[X] | $[X] | [High/Med/Low; source] |
 
 ### Net Fiscal Impact
-| Scenario | Year 1 | Year 5 | Year 10 |
-|----------|--------|--------|---------|
-| Conservative | $[X] | $[X] | $[X] |
-| Moderate | $[X] | $[X] | $[X] |
-| Optimistic | $[X] | $[X] | $[X] |
+| Scenario | Year 1 | Year 5 | Year 10 | Confidence / Provenance |
+|----------|--------|--------|---------|-------------------------|
+| Conservative | $[X] | $[X] | $[X] | [High/Med/Low; source] |
+| Moderate | $[X] | $[X] | $[X] | [High/Med/Low; source] |
+| Optimistic | $[X] | $[X] | $[X] | [High/Med/Low; source] |
 
 ## Funding Source
 [Where the money comes from]
@@ -458,8 +465,8 @@ When producing a fiscal analysis, use this structure:
 - Peer communities: [If available]
 - Industry standards: [If applicable]
 
-## Confidence Level
-[High/Medium/Low] - [Explanation of uncertainty]
+## Confidence / Provenance
+[High/Medium/Low; provenance: source(s); uncertainty: explanation]
 
 ## Recommendations
 - [Financial recommendation or caution]
@@ -472,6 +479,7 @@ When producing a fiscal analysis, use this structure:
 
 - Show your math
 - State assumptions explicitly
+- Include confidence and provenance for key figures, statutory thresholds, peer comparisons, and projections
 - Provide ranges, not false precision
 - Note what's not included
 - Be conservative on revenues, realistic on costs

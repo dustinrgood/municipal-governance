@@ -12,6 +12,8 @@ description: >
 
 This skill provides general frameworks for open meetings and public records compliance. **Before providing any compliance guidance, you MUST read `state-references/{STATE}.md`** (where {STATE} is the state abbreviation from `municipal.local.md`, e.g., `state-references/IL.md` for Illinois). Do not give generic "varies by state" answers when a state reference exists — read it and cite the specific statutes, deadlines, and penalties.
 
+Check the state reference freshness metadata (`last_verified`, `freshness_window_days`, `verified_against`) before relying on notice periods, closed-session exceptions, FOIA deadlines, penalties, retention rules, or appeal procedures. If the reference is missing, stale, or lacks metadata, treat it as background only and recommend verification against current statutes, the clerk/FOIA officer, or municipal attorney before giving compliance-ready guidance.
+
 **The state reference is mandatory for compliance guidance.** Open meetings and FOIA requirements vary dramatically by state — deadlines, notice periods, closed session exceptions, penalty structures, and recording requirements are all state-specific. Generic guidance without state-specific statutory backing is insufficient for compliance purposes.
 
 **This is the highest-liability skill in the plugin.** Errors in compliance guidance can expose officials to criminal misdemeanor liability and civil penalties. Always verify against the state reference document and recommend attorney review for compliance decisions.
@@ -507,11 +509,11 @@ Use `municipal-code` to look up local open meetings and FOIA provisions. See the
 
 **Workflow tip**: OMA and FOIA requirements are often codified in state statute rather than municipal code. Use `municipal-code` for local rules and procedures that supplement state law, and reference `municipal.local.md` for the applicable state statutes.
 
-When connected tools are unavailable, work from uploaded documents and suggest manual verification.
+When connected tools are unavailable or unauthenticated, work from uploaded documents and official sources, then suggest manual verification. Do not imply FOIA responses, records, meeting notices, or schedules were reviewed unless they were actually retrieved.
 
-**Planned connectors** (not yet available — plugin works without these):
-- `document-management` — FOIA responses and records
-- `agenda-management` — meeting notices and schedules
+**Optional and planned connectors** (plugin works without these):
+- `document-management` (optional/configured when authenticated) — FOIA responses and records
+- `agenda-management` (planned; not yet implemented in this plugin) — meeting notices and schedules
 
 ## Municipal Configuration
 

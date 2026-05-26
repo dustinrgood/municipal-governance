@@ -19,7 +19,7 @@ User invokes `/municipal-governance:meeting-prep`
 ## Inputs
 
 - Meeting date and type (regular session, committee, special meeting, workshop)
-- Agenda packet (file upload or link via `agenda-management`)
+- Agenda packet (file upload, `document-management` when authenticated, or `agenda-management` when available)
 - Specific items of interest (optional)
 
 ## Workflow
@@ -51,9 +51,20 @@ Check `municipal.local.md` for:
 - Policy priorities
 - Key contacts
 
-### 2. Retrieve Agenda and Materials
+### 2. Load State Reference and Check Freshness
 
-Pull the agenda packet from `agenda-management` or accept uploaded documents.
+When the briefing includes Open Meetings Act, public-hearing, quorum, voting, executive-session, notice, or other procedural compliance guidance, read `state-references/{STATE}.md` using the state from `municipal.local.md`.
+
+Check `last_verified`, `freshness_window_days`, and `verified_against`. If the state reference is missing or stale, treat state-law guidance as background only and mark procedural conclusions as requiring staff, clerk, or attorney verification before the meeting.
+
+### 3. Retrieve Agenda and Materials
+
+Retrieve materials from the best available source:
+- `document-management` when Box access is authenticated
+- `agenda-management` if a future agenda connector is installed
+- Uploaded agenda packets, staff reports, or links from the user
+
+If connectors are unavailable or unauthenticated, proceed from uploaded documents and clearly list missing materials. Do not assume an item is routine merely because supporting documents were not available.
 
 Documents to look for:
 - Official agenda
@@ -61,7 +72,7 @@ Documents to look for:
 - Supporting documents (contracts, plans, etc.)
 - Prior meeting minutes (for context)
 
-### 3. Agenda Overview
+### 4. Agenda Overview
 
 Create a quick-reference summary:
 
@@ -69,13 +80,13 @@ Create a quick-reference summary:
 |---|------|------|-----------|---------------|-----------------|
 | 1 | [Title] | [Action/Info/Hearing] | [Approve/Deny/None] | [$X] | [🟢/🟡/🔴] |
 
-### 4. Categorize Items
+### 5. Categorize Items
 
 **Consent Agenda**
 - Identify items on consent
 - Flag any that may warrant removal for separate discussion
 - Note any with fiscal impact above threshold
-- **Best practices**: Publish at least one week in advance; any member may pull an item for separate discussion without a second or vote; typical items include minutes approval, routine contracts, and bill payments. Properly managed consent agendas save 30+ minutes per meeting.
+- **Best practices**: Publish materials far enough in advance for review; any member may typically pull an item for separate discussion without a second or vote if local rules allow; typical items include minutes approval, routine contracts, and bill payments. Treat timing and pull rules as local-procedure questions unless verified in state law, municipal code, or council rules.
 
 **Public Hearings**
 - Required notice verification
@@ -92,7 +103,7 @@ Create a quick-reference summary:
 - Reports
 - Updates
 
-### 5. Synthesize Each Item
+### 6. Synthesize Each Item
 
 For each non-consent item, provide:
 
@@ -125,7 +136,7 @@ For each non-consent item, provide:
 - Related prior decisions
 - Timeline/deadline pressures
 
-### 6. Flag Items Requiring Special Attention
+### 7. Flag Items Requiring Special Attention
 
 Automatically flag items with:
 
@@ -147,7 +158,7 @@ Automatically flag items with:
 - Informational updates
 - Consent-appropriate items
 
-### 7. Check Procedural Requirements
+### 8. Check Procedural Requirements
 
 **Open Meetings Compliance**
 - Proper notice given?
@@ -164,9 +175,9 @@ Automatically flag items with:
 - Recusal/abstention anticipated
 - Supermajority items identified
 
-### 8. Generate Meeting Briefing
+### 9. Generate Meeting Briefing
 
-Produce comprehensive briefing document.
+Produce comprehensive briefing document. For decision-relevant claims, include confidence and provenance inline. Tag fiscal figures, code impacts, procedural requirements, and legal-risk flags with concise sources such as `agenda packet p.12`, `staff report`, `municipal-code`, `state-reference/IL last_verified 2026-03-01`, `clerk rules`, `web - verify`, or `model inference`.
 
 ## Output Format
 
@@ -191,6 +202,11 @@ Produce comprehensive briefing document.
 - Consent items: [X]
 - Total fiscal impact: $[X]
 
+### Source Notes
+- Agenda packet source: [uploaded packet / document-management / agenda link]
+- Procedural law reference: [state-reference/XX last_verified YYYY-MM-DD / needs verification]
+- Missing materials: [list or "none identified"]
+
 ---
 
 ## Agenda Overview
@@ -213,8 +229,8 @@ Produce comprehensive briefing document.
 ## Public Hearings
 
 ### [Item Number]: [Title]
-**Required by**: [statute/code reference]
-**Notice**: [Verified/Check required]
+**Required by**: [statute/code reference] *(Confidence: [High/Medium/Low]; provenance: [source])*
+**Notice**: [Verified/Check required] *(Confidence: [High/Medium/Low]; provenance: [source])*
 **Key Issues**: [Summary]
 **Public Comment Expected**: [Yes/No/Unknown]
 
@@ -233,10 +249,10 @@ Produce comprehensive briefing document.
 - [Point 2]
 - [Point 3]
 
-**Fiscal Impact**: $[amount] - [one-time/ongoing] - [funding source] *(Confidence: [High/Medium/Low] — [source])*
+**Fiscal Impact**: $[amount] - [one-time/ongoing] - [funding source] *(Confidence: [High/Medium/Low]; provenance: [source])*
 
 **Code Impact** *(if applicable)*:
-- [Current code provision and proposed change] *(Confidence: [High/Medium/Low] — [source])*
+- [Current code provision and proposed change] *(Confidence: [High/Medium/Low]; provenance: [source])*
 
 **Questions to Consider** (apply the Standard Deliberation Framework):
 1. **Fiscal impact**: What does this cost? One-time vs. recurring? Fund balance impact?
@@ -287,6 +303,7 @@ Produce comprehensive briefing document.
 |------|------------------------|----------------------|
 | [🔴 Item X] | [Specific claim — e.g., "preemption analysis assumes home rule authority"] | Attorney review |
 | [🔴 Item Y] | [Specific claim — e.g., "fiscal estimate based on staff report, not independently modeled"] | Finance staff confirmation |
+| [Procedural issue] | [Specific notice/hearing/voting claim based on stale or incomplete state/local rules] | Clerk or attorney verification |
 
 For complex or contested items, consider escalating to **PolicyAide multi-agent deliberation** before the vote — it stress-tests analysis through structured adversarial debate, surfacing blind spots a single-pass briefing may miss.
 
@@ -322,6 +339,8 @@ When in doubt, default to **Standard** and let the user escalate specific items.
 - Match depth to the mode selected in scoping — don't produce comprehensive output when the user asked for a focused briefing
 - For consent agenda items, brief descriptions are always sufficient unless user specifically asks to pull one
 - When agenda management tools are not connected, work from uploaded documents
+- Treat meeting briefings as potentially public records. Keep campaign strategy, personal political notes, and private constituent details out of official meeting-prep output unless the user explicitly asks for a separate non-governmental note.
+- Do not rely on stale or missing state references for Open Meetings, public-hearing, executive-session, or voting guidance; surface the verification need directly
 - Cross-reference policy priorities from `municipal.local.md`
 - Include relevant context from prior meetings when available
 

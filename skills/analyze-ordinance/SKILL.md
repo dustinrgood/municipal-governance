@@ -31,7 +31,18 @@ If not found, ask for basic municipal context and proceed with general analysis:
 - Home rule status
 - Government type
 
-### 2. Parse the Ordinance
+### 2. Load State Reference and Check Freshness
+
+When the municipality's state is known, read `state-references/{STATE}.md` before making legal-authority, preemption, public-process, or state-compliance claims.
+
+Check the state reference metadata:
+- `last_verified`
+- `freshness_window_days`
+- `verified_against`
+
+If the state reference is missing, lacks freshness metadata, or is outside its freshness window, use it only as background. In that case, mark state-law conclusions as requiring verification against current statutes or municipal attorney review before council action.
+
+### 3. Parse the Ordinance
 
 Extract and identify:
 - Ordinance number
@@ -40,7 +51,7 @@ Extract and identify:
 - Effective date
 - Any whereas clauses (legislative findings)
 
-### 3. Code Cross-Reference
+### 4. Code Cross-Reference
 
 Using `municipal-code` (when available), identify all existing code sections affected by the proposed ordinance:
 - Sections explicitly referenced
@@ -48,13 +59,13 @@ Using `municipal-code` (when available), identify all existing code sections aff
 - Sections being superseded
 - Related provisions that should be reviewed
 
-Flag any potential conflicts, gaps, or inconsistencies.
+If `municipal-code` is unavailable, work from the ordinance text, uploaded code excerpts, municipal website references, or manual user-provided citations. Flag those code conclusions as Medium or Low confidence and list the code sections that should be manually verified.
 
-### 4. Systematic Analysis
+### 5. Systematic Analysis
 
 Analyze the ordinance across these dimensions:
 
-**Legal Authority** — For non-home-rule municipalities, this is the **threshold question** and the most common source of legal vulnerability. Every proposed ordinance must have identifiable statutory authority. See the state reference in `state-references/` for specific enabling legislation and enumerated powers.
+**Legal Authority** — For non-home-rule municipalities, this is the **threshold question** and the most common source of legal vulnerability. Every proposed ordinance must have identifiable statutory authority. Use the freshness-checked state reference in `state-references/` for specific enabling legislation and enumerated powers.
 - Does the municipality have authority to enact this?
 - Home rule powers analysis (if applicable)
 - State preemption check
@@ -93,7 +104,7 @@ Analyze the ordinance across these dimensions:
 - FOIA implications
 - Open Meetings Act compliance
 
-### 5. Impact Classification
+### 6. Impact Classification
 
 Classify the ordinance using a three-tier system:
 
@@ -115,7 +126,7 @@ Classify the ordinance using a three-tier system:
 - High community impact
 - Recommend additional review (legal, financial, community)
 
-### 6. Generate Output
+### 7. Generate Output
 
 Produce a structured briefing including:
 
@@ -146,6 +157,8 @@ Produce a structured briefing including:
 - Best practices from peer communities
 - Relevant state or federal guidance
 
+For decision-relevant claims, include confidence and provenance inline. Tag legal authority, code conflicts, fiscal estimates, procedural requirements, and implementation estimates with `High/Medium/Low` and a concise source such as `state-reference/IL last_verified 2026-03-01`, `municipal-code`, `staff report p.4`, `uploaded ordinance`, `web - verify`, or `model inference`.
+
 ## Output Format
 
 ```markdown
@@ -164,19 +177,19 @@ Produce a structured briefing including:
 - **Code Sections Affected**: [list]
 
 ## Legal Authority
-[Analysis] *(Confidence: [High/Medium/Low] — [source])*
+[Analysis] *(Confidence: [High/Medium/Low]; provenance: [source])*
 
 ## Code Analysis
 ### Sections Amended
 [List with brief description]
 
 ### Potential Conflicts
-[Any identified conflicts or gaps] *(Confidence: [High/Medium/Low] — [e.g., "confirmed via municipal-code lookup" or "inferred from section title only"])*
+[Any identified conflicts or gaps] *(Confidence: [High/Medium/Low]; provenance: [e.g., "municipal-code lookup" or "inferred from section title only"])*
 
 ## Fiscal Impact
-| Category | One-Time | Ongoing | Confidence |
-|----------|----------|---------|------------|
-| [Item] | $X | $X/year | [High/Med/Low — source] |
+| Category | One-Time | Ongoing | Confidence / Provenance |
+|----------|----------|---------|-------------------------|
+| [Item] | $X | $X/year | [High/Med/Low; source] |
 
 **Total Estimated Cost**: $X
 **Funding Source**: [identified/unidentified]
@@ -207,6 +220,7 @@ Produce a structured briefing including:
 - [Specific legal authority conclusion that needs attorney confirmation]
 - [Specific code conflict that needs verification against full code text]
 - [Specific fiscal estimate and the assumption it rests on]
+- [Any state-law conclusion based on a stale, missing, or incomplete state reference]
 
 **Recommended verification steps:**
 - [ ] Municipal attorney review of [specific legal question]
@@ -231,6 +245,7 @@ Complex legal questions should be referred to the municipal attorney.*
 - **For zoning-related ordinances**: Evaluate against the court-established reasonableness test in the state reference (e.g., Illinois LaSalle/Sinclair factors). Reference the `land-use-zoning` skill for detailed zoning analysis frameworks.
 - **Model ordinance resources**: Check the state municipal league for model and sample ordinances before drafting from scratch (e.g., IML maintains categorized model ordinance and sample ordinance libraries).
 - When `municipal-code` is not available, note code sections that should be manually reviewed
+- When the state reference is stale or missing, do not present state-law guidance as settled; recommend verification against current statutes or municipal attorney review
 - Always include the legal disclaimer
 - Flag any items that require attorney review
 - Cross-reference with `municipal.local.md` policy priorities when available

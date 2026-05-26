@@ -1,5 +1,17 @@
 # Illinois Municipal Governance — State Reference
 
+```yaml
+reference_metadata:
+  jurisdiction: Illinois
+  last_verified: 2026-03-01
+  freshness_window_days: 180
+  covers_legislation_through: SB 243 (effective January 1, 2026)
+  verified_against:
+    - Illinois Compiled Statutes
+    - Illinois General Assembly SB 243 materials
+  verification_note: Exact review day was not recorded; date reflects the existing March 2026 review marker.
+```
+
 > **Important**: This reference compiles Illinois statutory requirements, deadlines, and thresholds relevant to municipal governance. It is maintained as a research document, not legal advice. All statutory citations, dollar amounts, and procedural requirements should be verified against current Illinois Compiled Statutes and with qualified legal counsel before relying on them for compliance decisions.
 >
 > **Last reviewed**: March 2026

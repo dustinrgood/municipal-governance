@@ -332,12 +332,13 @@ Official record of meeting proceedings. Legal document that memorializes actions
 
 ## Using Connected Tools
 
-- When connected tools are unavailable, work from uploaded documents and examples
+- Use `document-management` for templates and past examples when Box access is authenticated
+- When connected tools are unavailable or unauthenticated, work from uploaded documents and examples. Do not imply templates, prior examples, or ordinance tracking were reviewed unless they were actually retrieved.
 
-**Planned connectors** (not yet available — plugin works without these):
-- `document-management` — templates and past examples
-- `agenda-management` — ordinance/resolution tracking
-- `communication` — internal coordination
+**Optional and planned connectors** (plugin works without these):
+- `document-management` (optional/configured when authenticated) — templates and past examples
+- `agenda-management` (planned; not yet implemented in this plugin) — ordinance/resolution tracking
+- `communication` (planned; not yet implemented in this plugin) — internal coordination
 
 ## Municipal Configuration
 

@@ -1,10 +1,10 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## Project Overview
 
-This is a **Claude AI plugin** (`municipal-governance`, v0.5.0) for local government officials and staff, designed to work for **any US municipality**. Built by Dustin Good, sitting Elgin Illinois Councilmember and creator of CivicAide, PolicyAide, and CivicWork.Ai.
+This is a **Codex AI plugin** (`municipal-governance`, v0.5.0) for local government officials and staff, designed to work for **any US municipality**. Built by Dustin Good, sitting Elgin Illinois Councilmember and creator of CivicAide, PolicyAide, and CivicWork.Ai.
 
 It provides automated workflows for ordinance analysis, meeting preparation, policy research, budget review, constituent communications, agenda synthesis, intergovernmental scanning, vendor evaluation, meeting close-out, PolicyAide sync, and skill quality review.
 
@@ -30,10 +30,10 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
 
 ### Design
 
-**Agents** (`/agents/`): Utility agents that run as Claude Code subprocesses in Cowork with file editing access:
-- `setup-municipality` — Interactive configuration wizard that walks users through customizing `municipal.local.md` (primarily for Claude Code CLI users; Cowork users can use the native "Customize plugin settings" instead)
+**Agents** (`/agents/`): Utility agents that run as Codex subprocesses in Cowork with file editing access:
+- `setup-municipality` — Interactive configuration wizard that walks users through customizing `municipal.local.md` (primarily for Codex CLI users; Cowork users can use the native "Customize plugin settings" instead)
 - `setup-official` — Captures the elected official's personal profile (platform, priorities, campaign positions) via auto-discovery + interview, plus auto-discovers standing documents (strategic plan, comprehensive plan, budget). Writes `official.local.md` and `standing-documents.md`.
-- `setup-project` — Scaffolds a Cowork Project workspace folder with the right directory structure and a project-level CLAUDE.md, enabling persistent memory across sessions
+- `setup-project` — Scaffolds a Cowork Project workspace folder with the right directory structure and a project-level AGENTS.md, enabling persistent memory across sessions
 
 **Skills** (`/skills/*/SKILL.md`) form two tiers of domain expertise, all in the same directory format:
 
@@ -139,7 +139,7 @@ Follow the existing pattern in `skills/your-skill-name/SKILL.md`:
 ### Adding New Skills
 
 Create a new directory under `/skills/` with a `SKILL.md` file containing:
-1. YAML frontmatter with `description` (tells Claude when to activate)
+1. YAML frontmatter with `description` (tells Codex when to activate)
 2. Overview and purpose
 3. Conceptual framework / methodology
 4. Analysis techniques with step-by-step procedures
@@ -252,7 +252,7 @@ Layer 3: municipal.local.md      — Municipality-specific config. Unique per de
 
 ### plugin.json `author` field must be an object
 
-Claude Desktop strictly validates the plugin.json schema. The `author` field **must** be an object with a `name` property — a plain string will fail validation silently and crash the entire Plugins management page (not just this plugin, but all plugins).
+Codex Desktop strictly validates the plugin.json schema. The `author` field **must** be an object with a `name` property — a plain string will fail validation silently and crash the entire Plugins management page (not just this plugin, but all plugins).
 
 ```json
 "author": "CivicWork"              // WRONG — breaks the Plugins page
@@ -261,13 +261,13 @@ Claude Desktop strictly validates the plugin.json schema. The `author` field **m
 
 ### MCP placeholder entries propagate and persist
 
-When a plugin with `.mcp.json` entries is uploaded to Claude Desktop, those entries get written to three places:
+When a plugin with `.mcp.json` entries is uploaded to Codex Desktop, those entries get written to three places:
 
-1. The global config (`~/Library/Application Support/Claude/claude_desktop_config.json`) — prefixed as `municipal-governance:<name>`
+1. The global config (`~/Library/Application Support/Codex/claude_desktop_config.json`) — prefixed as `municipal-governance:<name>`
 2. The marketplace copy inside `local-agent-mode-sessions/.../cowork_plugins/marketplaces/local-desktop-app-uploads/municipal-governance/.mcp.json`
 3. The cache copy inside `local-agent-mode-sessions/.../cowork_plugins/cache/local-desktop-app-uploads/municipal-governance/<version>/.mcp.json`
 
-If the project `.mcp.json` is later cleaned, the uploaded copies and global config are **not** updated automatically. Stale entries will cause persistent error banners in Claude Desktop. To fully remove them, all three locations must be cleaned manually.
+If the project `.mcp.json` is later cleaned, the uploaded copies and global config are **not** updated automatically. Stale entries will cause persistent error banners in Codex Desktop. To fully remove them, all three locations must be cleaned manually.
 
 ### .mcp.json contains machine-specific paths and optional HTTP connectors
 

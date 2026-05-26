@@ -13,6 +13,8 @@ description: >
 
 This skill provides general frameworks for intergovernmental relations, home rule analysis, and preemption assessment. **Before providing any guidance on home rule, preemption, or intergovernmental authority, you MUST read `state-references/{STATE}.md`** (where {STATE} is the state abbreviation from `municipal.local.md`, e.g., `state-references/IL.md` for Illinois). Do not give generic answers when a state reference exists — read it and cite the specific constitutional provisions, enabling statutes, and current preemption landscape.
 
+Check the state reference freshness metadata (`last_verified`, `freshness_window_days`, `verified_against`) before relying on home rule thresholds, enabling statutes, preemption landscape, mandates, or intergovernmental authority. If the reference is missing, stale, or lacks metadata, use it only as background and verify current status through state statutes, legislative sources, municipal league materials, or municipal attorney review.
+
 **Critical for non-home-rule municipalities**: The distinction between home rule and non-home-rule authority is the most fundamental legal question for the target audience. Non-home-rule municipalities operate under Dillon's Rule — they possess only powers expressly granted by state law. Every recommendation must be evaluated against this constraint. See the state reference for constitutional framework, population thresholds, and specific limitations.
 
 ## Overview
@@ -385,11 +387,11 @@ Use `municipal-code` to look up local provisions related to intergovernmental au
 
 **Workflow tip**: Intergovernmental authority provisions may be in the general provisions or administration title, or scattered across topic-specific titles. Use `titles_only=true` to survey the code structure first.
 
-Use web search for current state legislation and federal requirements. When connected tools are unavailable, work from uploaded documents and web search.
+Use web search for current state legislation and federal requirements. When connected tools are unavailable or unauthenticated, work from uploaded documents, official sources, and web search. Do not imply intergovernmental agreements or related resolutions were reviewed unless they were actually retrieved.
 
-**Planned connectors** (not yet available — plugin works without these):
-- `document-management` — intergovernmental agreements
-- `agenda-management` — related resolutions
+**Optional and planned connectors** (plugin works without these):
+- `document-management` (optional/configured when authenticated) — intergovernmental agreements
+- `agenda-management` (planned; not yet implemented in this plugin) — related resolutions
 
 ## Municipal Configuration
 

@@ -14,6 +14,8 @@ This plugin automates common workflows for municipal elected officials and staff
 - **Agenda Synthesis**: Quick-turnaround agenda packet summaries
 - **Intergovernmental Scanning**: Monitor state/federal policy impacts on local government
 - **Vendor Evaluation**: Analyze vendor contracts, decompose deliverables, assess lock-in, and produce build feasibility specs
+- **Meeting Close-Out**: Capture votes, follow-ups, and surprises after meetings for persistent institutional memory
+- **PolicyAide Sync**: Send local profile/context summaries to PolicyAide for deeper multi-agent research
 
 ## Quick Start
 
@@ -79,6 +81,9 @@ The plugin provides analytical tools. The project workspace provides **persisten
 | `/municipal-governance:budget-review` | Analyze budget items and fiscal impact |
 | `/municipal-governance:intergovernmental-scan` | Scan state/federal policy impacts |
 | `/municipal-governance:vendor-evaluate` | Evaluate vendor contracts, assess lock-in, and spec open-source alternatives |
+| `/municipal-governance:meeting-close-out` | Record meeting outcomes, follow-ups, and briefing-book updates |
+| `/municipal-governance:sync-to-policyaide` | Sync municipality, official profile, and standing document summaries to PolicyAide |
+| `/municipal-governance:skill-qa` | Review plugin skills for provenance, trust gates, stale references, and connector assumptions |
 
 ## Configuration
 
@@ -98,7 +103,7 @@ The plugin works for **any US municipality**. State references add precision for
 
 ## Skills
 
-The plugin includes 12 domain expertise modules. You don't invoke these directly — Claude activates them automatically based on what you're working on.
+The plugin includes 11 domain expertise modules. You don't invoke these directly — Claude activates them automatically based on what you're working on.
 
 | Skill | What it covers | Example prompt |
 |-------|---------------|----------------|
@@ -116,13 +121,14 @@ The plugin includes 12 domain expertise modules. You don't invoke these directly
 
 ## Connectors
 
-The plugin can optionally connect to external data sources via MCP servers. Currently supported:
+The plugin can optionally connect to external data sources via MCP servers. Currently configured:
 
 | Connector | Description | Provider |
 |-----------|-------------|----------|
 | `municipal-code` | Search and retrieve municipal code sections (7 tools) | [MunicipalMCP](https://github.com/Skatterbrainz/MunicipalMCP) (Municode API) |
+| `document-management` | Retrieve agenda packets, staff reports, FOIA records, and standing documents when available | Box MCP HTTP endpoint (`https://mcp.box.com`) |
 
-Seven of the ten skills include domain-specific search patterns for `municipal-code` (e.g., zoning queries, ethics ordinance lookups, budget code references). Without connectors, commands work with uploaded documents and web search.
+`municipal-code` requires a local MunicipalMCP installation and machine-specific paths in `.mcp.json`. `document-management` is configured as an optional Box MCP endpoint and depends on account access/authentication. Without connectors, commands work with uploaded documents and clearly marked web or model-derived assumptions.
 
 ## How It Works
 
@@ -130,7 +136,7 @@ Seven of the ten skills include domain-specific search patterns for `municipal-c
 2. Claude asks a few quick scoping questions — what items matter to you, how deep should the analysis go
 3. Claude loads your municipality's configuration from `municipal.local.md` and the applicable state reference from `state-references/`
 4. Relevant skills activate automatically based on the subject matter
-5. You get structured output with attention-priority flags (red/yellow/green), confidence indicators on key claims, and recommended next steps — matched to the depth you asked for
+5. You get structured output with attention-priority flags (red/yellow/green), confidence and provenance indicators on key claims, and recommended next steps — matched to the depth you asked for
 6. For high-stakes items, the output includes an **Analysis Boundaries** section — a transparent disclosure of what the analysis can and cannot responsibly conclude as a single AI instance, with specific recommendations for verification (attorney review, staff confirmation, or escalation to PolicyAide's multi-agent deliberation framework)
 
 ### Why Analysis Boundaries Matter
