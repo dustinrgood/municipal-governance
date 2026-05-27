@@ -15,11 +15,15 @@ Run this agent when:
 
 ## Instructions
 
-### Step 1: Find and Read the Template
+### Step 1: Find and Read the Configuration or Template
 
-Read the file `municipal.local.md` in this plugin's directory. This is the configuration file you will be updating. Note which fields are already filled in and which still have `[bracket placeholders]`.
+Look for `municipal.local.md` in this plugin's directory first. This is the local, ignored deployment configuration file you will be updating.
 
-If fields are already filled in, ask the user whether they want to update the existing configuration or start fresh.
+If `municipal.local.md` exists, read it and note which fields are already filled in and which still have `[bracket placeholders]`. If fields are already filled in, ask the user whether they want to update the existing configuration or start fresh.
+
+If `municipal.local.md` does not exist, read `municipal.local.example.md` as the generic template. You will write the completed configuration to a new `municipal.local.md` file. Do not write municipality-specific information back to `municipal.local.example.md`.
+
+Connector configuration is separate. If the user asks to configure MCP tools, direct them to copy `.mcp.example.json` to `.mcp.json` and update the local MunicipalMCP paths.
 
 ### Step 2: Gather Core Information — Start with Name and State, Then Auto-Discover
 
@@ -123,7 +127,7 @@ If not already discovered in Step 2, ask about:
 
 Once you have gathered enough information, write the completed `municipal.local.md` file. Follow these rules:
 
-- Keep the exact same section structure and headings as the template
+- Keep the exact same section structure and headings as the existing configuration or `municipal.local.example.md` template
 - Replace `[bracket placeholders]` with the user's answers
 - For any fields the user didn't answer or said "skip," leave the bracket placeholder in place
 - Set the "Last updated" date to today's date

@@ -10,7 +10,7 @@ Every Cowork plugin follows this standardized structure:
 plugin-name/
 ├── .claude-plugin/
 │   └── plugin.json          # Required: Plugin manifest (name, version, description, author)
-├── .mcp.json                # Optional: MCP server configuration for external tools
+├── .mcp.example.json        # Optional: MCP server template for external tools
 ├── skills/                  # Workflow skills + domain knowledge (all SKILL.md format)
 │   └── skill-name/
 │       └── SKILL.md         # Required for each skill
@@ -37,7 +37,7 @@ The legal plugin is the closest analog to municipal-governance. Key patterns we 
 
 | Pattern | Legal Plugin | Municipal Governance |
 |---------|-------------|---------------------|
-| Local config | `legal.local.md` (org playbook) | `municipal.local.md` (city-specific context) |
+| Local config | `legal.local.md` (org playbook) | `municipal.local.md` (ignored city-specific context generated from `municipal.local.example.md`) |
 | Structured output | Traffic light triage (GREEN/YELLOW/RED) | Three-tier classification (🟢/🟡/🔴) |
 | Graceful degradation | Works without connected tools | Works without MCP servers (uploaded docs fallback) |
 | Skill activation | Description field triggers automatic loading | Same — YAML frontmatter `description` field |
@@ -55,7 +55,7 @@ municipal-governance/             (CivicWorkPlugin/)
 │   └── plugin.json               # v0.6.0, author: {"name": "CivicWork"}
 ├── .claude/
 │   └── settings.local.json       # Local Claude settings for enabled MCP servers
-├── .mcp.json                     # municipal-code local MCP + document-management Box HTTP MCP
+├── .mcp.example.json             # Connector template; .mcp.json is ignored local config
 ├── agents/
 │   ├── setup-municipality.md     # Interactive municipal.local.md configuration wizard
 │   ├── setup-official.md         # Official profile + standing document discovery
@@ -97,7 +97,9 @@ municipal-governance/             (CivicWorkPlugin/)
 │       ├── vendor-renewal-watcher.md
 │       ├── grant-radar.md
 │       └── council-follow-up-tracker.md
-├── municipal.local.md            # Municipality-specific configuration (template)
+├── municipal.local.example.md    # Tracked generic municipality configuration template
+├── municipal.local.md            # Ignored local deployment configuration, created by Customize/setup
+├── official.local.md             # Ignored elected official profile, created by setup-official
 ├── CLAUDE.md                     # Claude Code developer guidance
 ├── README.md                     # User documentation
 └── CivicWorkPluginReference.md   # This file
@@ -134,7 +136,7 @@ Each command draws on specific skills. This mapping documents the intended relat
 
 ### Current State
 
-Two connectors are configured, though availability depends on the user's installation and authentication:
+Two optional connectors are shown in `.mcp.example.json`. To enable them for a local deployment, copy `.mcp.example.json` to ignored `.mcp.json`, then update local paths and any authentication-dependent connectors:
 
 ```json
 {
@@ -151,7 +153,7 @@ Two connectors are configured, though availability depends on the user's install
 }
 ```
 
-**Important:** The `municipal-code` path is machine-specific and must be updated per-installation. The current file points to the developer's local MunicipalMCP install. `document-management` is an optional Box MCP endpoint; treat it as configured but not guaranteed to be authenticated in every deployment.
+**Important:** The `municipal-code` path is machine-specific and must be updated per-installation. `document-management` is an optional Box MCP endpoint; treat it as available only when the user's Box access and authentication are configured.
 
 ### MunicipalMCP Tools (7 tools via `municipal-code`)
 
@@ -247,6 +249,12 @@ Watcher workflow skills use stable Markdown memory files in generated project wo
 Keep watcher templates Markdown-only, simple, and source-tagged. Each file should preserve these canonical sections: Purpose, Last Checked, Sources Watched, Current Watchlist/Open Items, Recent Changes, Next Check, and Notes / Verification Needed. Include confidence/provenance fields for dates, dollar amounts, deadlines, legal/procedural conclusions, fit scores, and other decision-relevant claims.
 
 Watcher memory is public-record-adjacent. Templates and skills should remind users not to store campaign strategy, privileged legal advice, closed-session substance, confidential personnel details, private constituent casework, or sensitive negotiation strategy. External actions remain draft-only unless the user confirms.
+
+### Distribution Safety
+
+Public plugin distributions should be built from tracked and non-ignored source files only. Do not include local deployment files such as `municipal.local.md`, `official.local.md`, `standing-documents.md`, `briefing-book.md`, generated meeting notes, watcher reports, or project workspace contents.
+
+Use `municipal.local.example.md` as the shareable template. Cowork's "Customize plugin settings" flow and the `setup-municipality` agent create the ignored `municipal.local.md` file for each deployment.
 
 ---
 

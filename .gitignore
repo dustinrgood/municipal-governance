@@ -1,6 +1,7 @@
 .DS_Store
 .claude/
 .codex/
+.mcp.json
 municipal.local.md
 official.local.md
 standing-documents.md

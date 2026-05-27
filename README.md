@@ -21,7 +21,7 @@ This plugin automates common workflows for municipal elected officials and staff
 ## Quick Start
 
 1. **Install** the plugin
-2. **Customize** — Click "Customize plugin settings" to configure your municipality
+2. **Customize** — Click "Customize plugin settings" to configure your municipality. This creates a local `municipal.local.md` file.
 3. **Create workspace** — Run the **Setup Project** agent to scaffold a Cowork Project folder
 4. **Try it** — Upload an agenda packet and run `/municipal-governance:agenda-synthesis`
 
@@ -41,7 +41,7 @@ This plugin automates common workflows for municipal elected officials and staff
 
 ### Setup (Cowork)
 
-1. **Configure your municipality** — Click **"Customize plugin settings"** on the Cowork home screen. Cowork auto-discovers most municipality info via web search (population, government type, council structure, code provider, meeting schedule) and asks you about what it can't find. This writes `municipal.local.md`.
+1. **Configure your municipality** — Click **"Customize plugin settings"** on the Cowork home screen. Cowork auto-discovers most municipality info via web search (population, government type, council structure, code provider, meeting schedule) and asks you about what it can't find. This writes a local `municipal.local.md` file.
 
 2. **Create a project workspace** — Run the **Setup Project** agent from the Agents tab. It creates a folder on your computer with the right structure for governance work:
 
@@ -70,8 +70,9 @@ This plugin automates common workflows for municipal elected officials and staff
 
 ### Setup (Claude Code CLI)
 
-1. Run the **Setup Municipality** agent — it walks you through the full configuration interactively and offers to create a project workspace at the end.
-2. Or edit `municipal.local.md` manually.
+1. Run the **Setup Municipality** agent — it walks you through the full configuration interactively, uses `municipal.local.example.md` as the starting template when needed, writes a local `municipal.local.md`, and offers to create a project workspace at the end.
+2. Or copy `municipal.local.example.md` to `municipal.local.md` and edit it manually.
+3. Optional connectors are configured locally by copying `.mcp.example.json` to `.mcp.json` and updating machine-specific paths.
 
 ### Why a Project Workspace?
 
@@ -110,11 +111,14 @@ The plugin uses a three-layer architecture:
 
 | Layer | File | What it contains |
 |-------|------|-----------------|
+| **Municipality config template** | `municipal.local.example.md` | Generic starter fields for a new municipality |
 | **Municipality config** | `municipal.local.md` | Your council structure, contacts, fiscal context, priorities |
 | **State reference** | `state-references/{STATE}.md` | Statutory requirements, deadlines, thresholds, penalties |
 | **Skills** | `skills/*/SKILL.md` | Analytical frameworks (state-agnostic) |
 
 **`municipal.local.md`** is created when you customize the plugin. It includes: municipality name, state, government type, council structure, meeting schedule, code provider, budget context, fiscal thresholds, policy priorities, contacts, and committee structure.
+
+Local deployment files are intentionally ignored by git and should not be included in public distribution zips: `municipal.local.md`, `official.local.md`, `standing-documents.md`, `briefing-book.md`, and `.mcp.json`. Share `municipal.local.example.md` and `.mcp.example.json` as portable templates instead.
 
 **State references** provide jurisdiction-specific statutory content — statute citations, compliance deadlines, dollar thresholds, penalty structures, and institutional resources. Currently available: **Illinois** (`state-references/IL.md`). Additional states can be contributed by following the IL.md structure as a template.
 
@@ -140,14 +144,14 @@ The plugin includes 11 domain expertise modules. You don't invoke these directly
 
 ## Connectors
 
-The plugin can optionally connect to external data sources via MCP servers. Currently configured:
+The plugin can optionally connect to external data sources via MCP servers. Copy `.mcp.example.json` to `.mcp.json` for a local deployment, then update any machine-specific paths.
 
 | Connector | Description | Provider |
 |-----------|-------------|----------|
 | `municipal-code` | Search and retrieve municipal code sections (7 tools) | [MunicipalMCP](https://github.com/Skatterbrainz/MunicipalMCP) (Municode API) |
 | `document-management` | Retrieve agenda packets, staff reports, FOIA records, and standing documents when available | Box MCP HTTP endpoint (`https://mcp.box.com`) |
 
-`municipal-code` requires a local MunicipalMCP installation and machine-specific paths in `.mcp.json`. `document-management` is configured as an optional Box MCP endpoint and depends on account access/authentication. Without connectors, commands work with uploaded documents and clearly marked web or model-derived assumptions.
+`municipal-code` requires a local MunicipalMCP installation and machine-specific paths in `.mcp.json`. `document-management` is shown in the example as an optional Box MCP endpoint and depends on account access/authentication. Without connectors, commands work with uploaded documents and clearly marked web or model-derived assumptions.
 
 ## How It Works
 

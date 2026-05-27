@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "municipal-code": {
+      "command": "/path/to/MunicipalMCP/.venv/bin/python3",
+      "args": ["/path/to/MunicipalMCP/municode-mcp-server.py"]
+    },
+    "document-management": {
+      "type": "http",
+      "url": "https://mcp.box.com"
+    }
+  }
+}

@@ -22,9 +22,10 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
 ├── scripts/            # Hook scripts (check-config.sh)
 ├── .claude-plugin/     # Plugin metadata (plugin.json v0.6.0)
 ├── .claude/            # Local Claude settings (enabled MCP servers)
-├── .mcp.json           # MCP server connections (municipal-code, document-management)
-├── municipal.local.md  # Municipality-specific configuration (template — customize per deployment)
-├── official.local.md   # Elected official's personal profile (template — created by setup-official agent)
+├── .mcp.example.json   # MCP connector template; .mcp.json is ignored local config
+├── municipal.local.example.md  # Tracked generic municipality configuration template
+├── municipal.local.md  # Ignored local municipality configuration — created by Customize/setup
+├── official.local.md   # Ignored elected official's personal profile — created by setup-official agent
 ├── README.md           # User documentation with installation + quick start
 └── CivicWorkPluginReference.md  # Developer reference
 ```
@@ -100,8 +101,8 @@ User command/watch run → Scope the work (brief user questions) → Load munici
 
 ### MCP Server Connections
 
-Defined in `.mcp.json`. **Configured:**
-- `municipal-code` — Municode lookup via [MunicipalMCP](https://github.com/Skatterbrainz/MunicipalMCP) (Python, installed at `~/CivicWork/MunicipalMCP` with Python 3.12 venv). Path is machine-specific — must be updated per-installation.
+Configured locally in ignored `.mcp.json`, with `.mcp.example.json` as the tracked template. **Optional connectors:**
+- `municipal-code` — Municode lookup via [MunicipalMCP](https://github.com/Skatterbrainz/MunicipalMCP). The command path is machine-specific and must be updated per-installation.
 - `document-management` — Box HTTP MCP endpoint (`https://mcp.box.com`) for agenda packets, staff reports, FOIA records, and standing documents when the user's Box access/authentication is available. Treat as optional/experimental and provide uploaded-document fallback.
 
 **Planned** (referenced in skills as "Planned connectors" — plugin works without these):
@@ -124,7 +125,7 @@ The hook is silent on the happy path (configured municipality with state referen
 
 ### Configuration Is Central
 
-All workflows depend on `municipal.local.md` being customized with municipality-specific information. The template includes sections for: municipality basics, council structure, code references, agenda management, TIF districts, budget context, fiscal impact thresholds, policy priorities, ethics/disclosure rules, contacts, committees, procedural notes, and regional context.
+All workflows depend on `municipal.local.md` being customized with municipality-specific information. `municipal.local.example.md` is the tracked generic template; Cowork's "Customize plugin settings" flow or the `setup-municipality` agent creates the ignored local `municipal.local.md` file. The template includes sections for: municipality basics, council structure, code references, agenda management, TIF districts, budget context, fiscal impact thresholds, policy priorities, ethics/disclosure rules, contacts, committees, procedural notes, and regional context.
 
 ### Adding New Workflow Skills
 
@@ -275,6 +276,6 @@ When a plugin with `.mcp.json` entries is uploaded to Claude Desktop / Cowork, t
 
 If the project `.mcp.json` is later cleaned, the uploaded copies and global config are **not** updated automatically. Stale entries can cause persistent error banners in the host app. To fully remove them, all three locations must be cleaned manually.
 
-### .mcp.json contains machine-specific paths and optional HTTP connectors
+### .mcp.json is local and machine-specific
 
-The current `.mcp.json` has `municipal-code` configured with absolute paths to the developer's local MunicipalMCP installation. This must be updated per-installation. It also has `document-management` configured as a Box HTTP MCP endpoint, which depends on account access/authentication and should be treated as optional. Other connector categories are referenced in skills as planned integrations but are not yet wired — the plugin works without them.
+The tracked `.mcp.example.json` shows the optional `municipal-code` and `document-management` connector shape. Each deployment should copy it to ignored `.mcp.json` and update local MunicipalMCP paths and authentication-dependent connectors. Other connector categories are referenced in skills as planned integrations but are not yet wired — the plugin works without them.
