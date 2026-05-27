@@ -129,12 +129,17 @@ Draft staff questions, partner outreach, council memo bullets, or a go/no-go sum
 ### 7. Update Local Radar Memory
 
 If the user wants persistence, propose an update to `watchers/grant-radar.md`:
-- Opportunity name and source URL
-- Deadline and next milestone
-- Fit score and confidence
-- Match/compliance notes
-- Follow-up owner/status if known
-- Next check date
+- `Last Checked`
+- `Sources Watched`
+- `Priority Areas`
+- `Current Watchlist / Open Items`
+- `Eligibility / Compliance Questions`
+- `Upcoming Deadlines`
+- `Recent Changes`
+- `Next Check`
+- `Notes / Verification Needed`
+
+Use the canonical starter template at `templates/watchers/grant-radar.md` when creating a new radar file. Preserve the template headings when updating existing memory so future runs can compare the same fields reliably.
 
 Show the update before writing. Keep the record factual and avoid private personnel, confidential negotiation, privileged legal, or campaign material.
 
@@ -198,6 +203,16 @@ Show the update before writing. Keep the record factual and avoid private person
 - [ ] [Confirm match source with finance]
 - [ ] [Prepare council authorization or partner letter]
 - [ ] [Watch again on date]
+
+## Watcher Memory Update
+<!-- Include only if user wants local persistence. Show before writing. -->
+- Last Checked: [date/time]
+- Sources Watched: [funding sources checked]
+- Priority Areas: [priority changes]
+- Current Watchlist / Open Items: [source-tagged opportunity rows]
+- Eligibility / Compliance Questions: [questions to verify]
+- Upcoming Deadlines: [dates/actions]
+- Next Check: [date/cadence]
 
 ## Analysis Boundaries
 

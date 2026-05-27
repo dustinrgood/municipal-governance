@@ -56,7 +56,12 @@ This plugin automates common workflows for municipal elected officials and staff
    │   └── plans/             ← Comprehensive plan, strategic plan, CIP
    ├── meeting-notes/         ← Post-meeting summaries and action items
    ├── research/              ← Saved policy research
-   └── watchers/              ← Local watcher memory and status logs
+   └── watchers/              ← Local watcher memory files
+       ├── agenda-watcher.md
+       ├── statehouse-monitor.md
+       ├── vendor-renewal-watcher.md
+       ├── grant-radar.md
+       └── council-follow-up-tracker.md
    ```
 
    Then point Cowork to it: **"Work in a project" → "+" → "Use an existing folder"** → select the created folder.
@@ -71,6 +76,12 @@ This plugin automates common workflows for municipal elected officials and staff
 ### Why a Project Workspace?
 
 The plugin provides analytical tools. The project workspace provides **persistent memory**. With a Cowork Project, Claude remembers prior meeting decisions, research, and your preferences across sessions — building institutional knowledge over time. Without it, every conversation starts fresh.
+
+### Watcher Memory
+
+The Setup Project agent seeds `watchers/*.md` from canonical starter templates in `templates/watchers/`. Each watcher memory file keeps the same simple shape: purpose, last checked, sources watched, current watchlist or open items, recent changes, next check, and notes or verification needed.
+
+Watcher memory is meant to be factual, source-tagged, and public-record-adjacent. Keep campaign strategy, privileged legal advice, closed-session substance, confidential personnel details, private constituent casework, and sensitive negotiation strategy out of these files. Watcher workflows may draft notifications, outreach, or external updates, but they do not send, submit, sync, or post anything without explicit confirmation.
 
 ## Commands
 

@@ -134,12 +134,17 @@ Draft vendor questions, staff information requests, or council agenda questions 
 ### 8. Update Local Watcher Memory
 
 If the user wants persistence, propose an update to `watchers/vendor-renewal-watcher.md`:
-- Contract inventory row
-- Renewal/notice dates
-- Risk tier
-- Missing documents
-- Recommended next review date
-- Follow-up owner/status if known
+- `Last Checked`
+- `Sources Watched`
+- `Vendor Inventory`
+- `Current Watchlist / Open Items`
+- `Missing Contract Terms`
+- `Renewal / Review Calendar`
+- `Recent Changes`
+- `Next Review`
+- `Notes / Verification Needed`
+
+Use the canonical starter template at `templates/watchers/vendor-renewal-watcher.md` when creating a new watcher file. Preserve the template headings when updating existing memory so future runs can compare the same fields reliably.
 
 Show the update before writing. Keep watcher records factual and avoid privileged legal advice, confidential negotiation strategy, or campaign/political notes.
 
@@ -197,6 +202,16 @@ Show the update before writing. Keep watcher records factual and avoid privilege
 ## Draft Questions
 <!-- Include only if useful. Do not send without confirmation. -->
 - [Question for staff/vendor/legal]
+
+## Watcher Memory Update
+<!-- Include only if user wants local persistence. Show before writing. -->
+- Last Checked: [date/time]
+- Sources Watched: [contracts/registers/agenda materials]
+- Vendor Inventory: [new or changed rows]
+- Current Watchlist / Open Items: [source-tagged dates, cost, renewal type, risk tier]
+- Missing Contract Terms: [terms/documents to retrieve]
+- Renewal / Review Calendar: [next milestones]
+- Next Review: [date/cadence]
 
 ## Analysis Boundaries
 

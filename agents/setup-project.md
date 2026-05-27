@@ -60,7 +60,22 @@ Create:
 ├── meeting-notes/
 ├── research/
 └── watchers/
+    ├── agenda-watcher.md
+    ├── statehouse-monitor.md
+    ├── vendor-renewal-watcher.md
+    ├── grant-radar.md
+    └── council-follow-up-tracker.md
 ```
+
+Create the watcher memory files from the canonical starter templates in `templates/watchers/`:
+
+- `templates/watchers/agenda-watcher.md` → `{workspace}/watchers/agenda-watcher.md`
+- `templates/watchers/statehouse-monitor.md` → `{workspace}/watchers/statehouse-monitor.md`
+- `templates/watchers/vendor-renewal-watcher.md` → `{workspace}/watchers/vendor-renewal-watcher.md`
+- `templates/watchers/grant-radar.md` → `{workspace}/watchers/grant-radar.md`
+- `templates/watchers/council-follow-up-tracker.md` → `{workspace}/watchers/council-follow-up-tracker.md`
+
+If a template file is unavailable, create a starter Markdown file with these sections: Purpose, Last Checked, Sources Watched, Current Watchlist/Open Items, Recent Changes, Next Check, and Notes / Verification Needed. Include a public-record caution in the notes section and keep external actions draft-only unless the user confirms.
 
 ### Step 4: Generate Project CLAUDE.md
 
@@ -90,7 +105,7 @@ When using `/municipal-governance:*` commands in this project:
 3. Reference `documents/plans/` for comprehensive plan and strategic plan alignment checks
 4. Save policy research outputs to `research/` for future reference
 5. After meetings, use `/municipal-governance:meeting-close-out` and save results to `meeting-notes/`
-6. Store watcher baselines and run logs in `watchers/` only after reviewing proposed updates
+6. Store watcher baselines and run logs in the canonical `watchers/*.md` memory files only after reviewing proposed updates
 
 ## Workspace
 
@@ -103,7 +118,7 @@ When using `/municipal-governance:*` commands in this project:
 | `documents/plans/` | Comprehensive plan, strategic plan, CIP |
 | `meeting-notes/` | Post-meeting summaries, decisions, action items |
 | `research/` | Saved policy research for future reference |
-| `watchers/` | Agenda, statehouse, vendor renewal, grant, and council follow-up watcher memory |
+| `watchers/` | Canonical watcher memory files for agendas, statehouse activity, vendor renewals, grants, and council follow-ups |
 
 ## Key Contacts
 

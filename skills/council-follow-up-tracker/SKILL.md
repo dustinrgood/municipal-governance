@@ -138,11 +138,17 @@ Draft reminders or staff questions only. Do not send them or update external pro
 ### 8. Update Local Tracker Memory
 
 If the user wants persistence, propose an update to `watchers/council-follow-up-tracker.md`:
-- Open item
-- Source and date created
-- Owner, due date, and next milestone
-- Status and last update
-- Linked agenda item or meeting
+- `Last Checked`
+- `Sources Watched`
+- `Open Follow-Ups`
+- `Upcoming Agenda Linkage`
+- `Current Watchlist / Open Items`
+- `Closed Items`
+- `Recent Changes`
+- `Next Check`
+- `Notes / Verification Needed`
+
+Use the canonical starter template at `templates/watchers/council-follow-up-tracker.md` when creating a new tracker file. Preserve the template headings when updating existing memory so future runs can compare the same fields reliably.
 
 Show the update before writing. Keep tracker memory factual and public-record-adjacent. Do not include private political notes, legal strategy, closed-session substance, confidential personnel details, or private constituent casework.
 
@@ -198,6 +204,16 @@ Show the update before writing. Keep tracker memory factual and public-record-ad
 ## Draft Reminder or Question
 <!-- Include only if requested. Do not send without confirmation. -->
 [Draft text]
+
+## Watcher Memory Update
+<!-- Include only if user wants local persistence. Show before writing. -->
+- Last Checked: [date/time]
+- Sources Watched: [meeting notes/minutes/packets]
+- Open Follow-Ups: [source-tagged open rows]
+- Upcoming Agenda Linkage: [return agenda links]
+- Current Watchlist / Open Items: [items still monitoring]
+- Closed Items: [confirmed closures]
+- Next Check: [date/cadence]
 
 ## Analysis Boundaries
 

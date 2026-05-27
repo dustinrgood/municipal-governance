@@ -121,11 +121,17 @@ If a position letter, testimony outline, or council update is requested, draft i
 ### 7. Update Local Monitor Memory
 
 If the user wants persistence, propose an update to `watchers/statehouse-monitor.md`:
-- Topics and bills watched
-- Current status and last checked source
-- Next deadline
-- Recommended next check date
-- Follow-up owner/status if known
+- `Last Checked`
+- `Sources Watched`
+- `Current Watchlist / Open Items`
+- `Current Status`
+- `Deadlines / Hearings / Effective Dates`
+- `Municipal Impact Notes`
+- `Recent Changes`
+- `Next Check`
+- `Notes / Verification Needed`
+
+Use the canonical starter template at `templates/watchers/statehouse-monitor.md` when creating a new monitor file. Preserve the template headings when updating existing memory so future runs can compare the same fields reliably.
 
 Show the update before writing. Keep it factual and public-record-adjacent; do not include campaign strategy, private political whip counts, privileged legal advice, or confidential staff deliberations.
 
@@ -178,6 +184,16 @@ Show the update before writing. Keep it factual and public-record-adjacent; do n
 - [ ] [Run intergovernmental-scan on topic X]
 - [ ] [Ask municipal attorney/staff to verify preemption or mandate conclusion]
 - [ ] [Prepare council update or testimony draft]
+
+## Watcher Memory Update
+<!-- Include only if user wants local persistence. Show before writing. -->
+- Last Checked: [date/time]
+- Sources Watched: [official sources checked]
+- Current Watchlist / Open Items: [topic, bill, rule, or deadline watchlist updates]
+- Current Status: [source-tagged status]
+- Deadlines / Hearings / Effective Dates: [dates to track]
+- Municipal Impact Notes: [decision-relevant impact notes]
+- Next Check: [date/cadence]
 
 ## Analysis Boundaries
 

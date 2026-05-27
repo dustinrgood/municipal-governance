@@ -124,11 +124,19 @@ If the user wants a notification drafted, prepare it as a draft only. Do not sen
 ### 7. Update Local Watcher Memory
 
 If running inside a project workspace and the user wants persistence, propose an update to `watchers/agenda-watcher.md` with:
-- Source URLs checked
-- Meeting dates checked
-- Current packet/version identifiers
-- Detected changes
-- Follow-up status
+- `Last Checked`
+- `Sources Watched`
+- `Upcoming Meetings`
+- `Current Watchlist / Open Items`
+- `Current Agenda/Packet Status`
+- `New or Changed Items`
+- `Items Needing Follow-Up Workflows`
+- `Missing Materials`
+- `Recent Changes`
+- `Next Check`
+- `Notes / Verification Needed`
+
+Use the canonical starter template at `templates/watchers/agenda-watcher.md` when creating a new watcher file. Preserve the template headings when updating existing memory so future runs can compare the same fields reliably.
 
 Show the proposed update before writing. Treat watcher logs as public-record-adjacent: do not include campaign strategy, privileged legal advice, closed-session substance, confidential personnel details, or private constituent information.
 
@@ -185,9 +193,14 @@ Show the proposed update before writing. Treat watcher logs as public-record-adj
 
 ## Watcher Memory Update
 <!-- Include only if user wants local persistence. Show before writing. -->
-- Source checked: [URL]
-- Stored current state: [meeting/date/version]
-- Follow-up status: [open/closed]
+- Last Checked: [date/time]
+- Sources Watched: [URLs or locations]
+- Current Watchlist / Open Items: [meetings/items still being watched]
+- Current Agenda/Packet Status: [meeting/date/version]
+- New or Changed Items: [source-tagged changes]
+- Items Needing Follow-Up Workflows: [open items]
+- Missing Materials: [items to verify]
+- Next Check: [date/cadence]
 
 ## Analysis Boundaries
 <!-- Include when the report flags procedural/legal risk, public hearing requirements, executive-session issues, or major fiscal/code items. -->

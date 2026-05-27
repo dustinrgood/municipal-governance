@@ -16,6 +16,8 @@ plugin-name/
 │       └── SKILL.md         # Required for each skill
 ├── hooks/                   # Optional: Event handlers
 │   └── hooks.json
+├── templates/               # Optional starter files for generated workspaces
+│   └── watchers/
 └── README.md                # Documentation
 ```
 
@@ -88,6 +90,13 @@ municipal-governance/             (CivicWorkPlugin/)
 │   ├── ethics-conflicts/SKILL.md          # Conflict of interest, recusal, gift bans
 │   ├── vendor-assessment/SKILL.md         # Vendor lock-in, build-vs-buy, decomposition, procurement
 │   └── vendor-alternatives/SKILL.md       # Municipal software alternatives and replacement tiers
+├── templates/
+│   └── watchers/
+│       ├── agenda-watcher.md
+│       ├── statehouse-monitor.md
+│       ├── vendor-renewal-watcher.md
+│       ├── grant-radar.md
+│       └── council-follow-up-tracker.md
 ├── municipal.local.md            # Municipality-specific configuration (template)
 ├── CLAUDE.md                     # Claude Code developer guidance
 ├── README.md                     # User documentation
@@ -222,6 +231,22 @@ Each command .md follows this pattern:
 5. Output format (structured Markdown template)
 6. Variations (alternative modes like quick scan vs. deep dive)
 7. Notes (edge cases, fallbacks, disclaimers)
+
+### Watcher Memory Templates
+
+Watcher workflow skills use stable Markdown memory files in generated project workspaces:
+
+| Project File | Packaged Template | Workflow |
+|--------------|-------------------|----------|
+| `watchers/agenda-watcher.md` | `templates/watchers/agenda-watcher.md` | Agenda postings, packets, addenda, and missing materials |
+| `watchers/statehouse-monitor.md` | `templates/watchers/statehouse-monitor.md` | Bills, agency actions, mandates, preemption, and deadlines |
+| `watchers/vendor-renewal-watcher.md` | `templates/watchers/vendor-renewal-watcher.md` | Contract inventory, renewal dates, notice deadlines, cost, and risk tier |
+| `watchers/grant-radar.md` | `templates/watchers/grant-radar.md` | Funding sources, opportunities, deadlines, match, fit, and eligibility questions |
+| `watchers/council-follow-up-tracker.md` | `templates/watchers/council-follow-up-tracker.md` | Open follow-ups, owners, due dates, agenda linkage, and closed items |
+
+Keep watcher templates Markdown-only, simple, and source-tagged. Each file should preserve these canonical sections: Purpose, Last Checked, Sources Watched, Current Watchlist/Open Items, Recent Changes, Next Check, and Notes / Verification Needed. Include confidence/provenance fields for dates, dollar amounts, deadlines, legal/procedural conclusions, fit scores, and other decision-relevant claims.
+
+Watcher memory is public-record-adjacent. Templates and skills should remind users not to store campaign strategy, privileged legal advice, closed-session substance, confidential personnel details, private constituent casework, or sensitive negotiation strategy. External actions remain draft-only unless the user confirms.
 
 ---
 

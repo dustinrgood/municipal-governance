@@ -16,6 +16,7 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
 .
 ├── agents/             # 3 utility agents (setup-municipality, setup-project, setup-official)
 ├── skills/             # 27 skills: 16 workflow commands + 11 domain expertise modules
+├── templates/          # Starter watcher memory templates for project workspaces
 ├── state-references/   # State-specific statutory requirements (IL.md, etc.)
 ├── hooks/              # Event hooks (SessionStart config check)
 ├── scripts/            # Hook scripts (check-config.sh)
@@ -33,7 +34,7 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
 **Agents** (`/agents/`): Utility agents that run as Claude Code subprocesses in Cowork with file editing access:
 - `setup-municipality` — Interactive configuration wizard that walks users through customizing `municipal.local.md` (primarily for Claude Code CLI users; Cowork users can use the native "Customize plugin settings" instead)
 - `setup-official` — Captures the elected official's personal profile (platform, priorities, campaign positions) via auto-discovery + interview, plus auto-discovers standing documents (strategic plan, comprehensive plan, budget). Writes `official.local.md` and `standing-documents.md`.
-- `setup-project` — Scaffolds a Cowork Project workspace folder with the right directory structure and a project-level CLAUDE.md, enabling persistent memory across sessions
+- `setup-project` — Scaffolds a Cowork Project workspace folder with the right directory structure, starter watcher memory files, and a project-level CLAUDE.md, enabling persistent memory across sessions
 
 **Skills** (`/skills/*/SKILL.md`) form two tiers of domain expertise, all in the same directory format:
 
