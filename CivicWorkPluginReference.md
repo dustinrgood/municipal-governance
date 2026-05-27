@@ -50,7 +50,7 @@ The legal plugin is the closest analog to municipal-governance. Key patterns we 
 ```
 municipal-governance/             (CivicWorkPlugin/)
 ├── .claude-plugin/
-│   └── plugin.json               # v0.5.0, author: {"name": "CivicWork"}
+│   └── plugin.json               # v0.6.0, author: {"name": "CivicWork"}
 ├── .claude/
 │   └── settings.local.json       # Local Claude settings for enabled MCP servers
 ├── .mcp.json                     # municipal-code local MCP + document-management Box HTTP MCP
@@ -59,7 +59,7 @@ municipal-governance/             (CivicWorkPlugin/)
 │   ├── setup-official.md         # Official profile + standing document discovery
 │   └── setup-project.md          # Cowork Project workspace scaffolding
 ├── skills/
-│   ├── # Workflow Skills (11) — user-facing workflows
+│   ├── # Workflow Skills (16) — user-facing workflows
 │   ├── analyze-ordinance/SKILL.md       # /municipal-governance:analyze-ordinance
 │   ├── meeting-prep/SKILL.md            # /municipal-governance:meeting-prep
 │   ├── policy-research/SKILL.md         # /municipal-governance:policy-research
@@ -71,6 +71,11 @@ municipal-governance/             (CivicWorkPlugin/)
 │   ├── meeting-close-out/SKILL.md        # /municipal-governance:meeting-close-out
 │   ├── sync-to-policyaide/SKILL.md       # /municipal-governance:sync-to-policyaide
 │   ├── skill-qa/SKILL.md                 # /municipal-governance:skill-qa
+│   ├── agenda-watcher/SKILL.md           # /municipal-governance:agenda-watcher
+│   ├── statehouse-monitor/SKILL.md       # /municipal-governance:statehouse-monitor
+│   ├── vendor-renewal-watcher/SKILL.md   # /municipal-governance:vendor-renewal-watcher
+│   ├── grant-radar/SKILL.md              # /municipal-governance:grant-radar
+│   ├── council-follow-up-tracker/SKILL.md # /municipal-governance:council-follow-up-tracker
 │   ├── # Domain Skills (11) — knowledge modules
 │   ├── municipal-code-analysis/SKILL.md   # Code interpretation, cross-referencing, MunicipalMCP tool reference
 │   ├── parliamentary-procedure/SKILL.md   # Robert's Rules, motions, voting, scripted chair language
@@ -108,6 +113,11 @@ Each command draws on specific skills. This mapping documents the intended relat
 | `meeting-close-out` | parliamentary-procedure, council-communication | meeting-prep, agenda-synthesis |
 | `sync-to-policyaide` | policy-evaluation | public-finance, municipal-code-analysis, council-communication |
 | `skill-qa` | plugin quality standards | all workflow and domain skills under review |
+| `agenda-watcher` | agenda-synthesis, meeting-prep | open-meetings-foia, public-finance, municipal-code-analysis |
+| `statehouse-monitor` | intergovernmental-relations | intergovernmental-scan, policy-evaluation, public-finance, municipal-code-analysis |
+| `vendor-renewal-watcher` | vendor-assessment, vendor-alternatives | vendor-evaluate, public-finance, municipal-code-analysis, open-meetings-foia |
+| `grant-radar` | intergovernmental-relations | public-finance, policy-evaluation, council-communication, intergovernmental-scan |
+| `council-follow-up-tracker` | meeting-close-out, parliamentary-procedure | council-communication, open-meetings-foia, policy-evaluation |
 
 ---
 

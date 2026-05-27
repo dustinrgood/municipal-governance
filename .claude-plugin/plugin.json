@@ -1,7 +1,7 @@
 {
   "name": "municipal-governance",
-  "version": "0.5.0",
-  "description": "AI-powered productivity plugin for local government elected officials and staff. Automates ordinance analysis, meeting preparation, policy research, constituent communications, budget review, vendor evaluation, and more — all configurable to your municipality's specific code, procedures, and priorities.",
+  "version": "0.6.0",
+  "description": "AI-powered productivity plugin for local government elected officials and staff. Automates ordinance analysis, meeting preparation, policy research, constituent communications, budget review, vendor evaluation, watcher workflows, and more — all configurable to your municipality's specific code, procedures, and priorities.",
   "author": {
     "name": "CivicWork"
   },
@@ -21,6 +21,11 @@
     "foia",
     "parliamentary-procedure",
     "vendor-evaluation",
-    "procurement"
+    "procurement",
+    "agenda-watcher",
+    "grant-monitoring",
+    "contract-renewals",
+    "legislative-monitoring",
+    "follow-up-tracking"
   ]
 }

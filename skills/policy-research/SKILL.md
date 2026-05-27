@@ -363,7 +363,7 @@ If the user accepts escalation:
    ```json
    {
      "handoffType": "research_preseed",
-     "pluginVersion": "0.5.0",
+     "pluginVersion": "0.6.0",
      "payload": {
        "topic": "[the research topic]",
        "researchIntent": "[mapped from depth mode: decision-focused → vote_prep, comprehensive → explore]",

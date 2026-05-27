@@ -90,7 +90,7 @@ Data minimization rules:
 ```json
 {
   "handoffType": "profile_sync",
-  "pluginVersion": "0.5.0",
+  "pluginVersion": "0.6.0",
   "payload": {
     "officialProfile": {
       "name": "[from official.local.md]",
@@ -128,7 +128,7 @@ Data minimization rules:
 ```json
 {
   "handoffType": "standing_docs",
-  "pluginVersion": "0.5.0",
+  "pluginVersion": "0.6.0",
   "payload": {
     "documents": [
       {

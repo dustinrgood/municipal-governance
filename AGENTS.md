@@ -4,9 +4,9 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 ## Project Overview
 
-This is a **Codex AI plugin** (`municipal-governance`, v0.5.0) for local government officials and staff, designed to work for **any US municipality**. Built by Dustin Good, sitting Elgin Illinois Councilmember and creator of CivicAide, PolicyAide, and CivicWork.Ai.
+This is a **Codex AI plugin** (`municipal-governance`, v0.6.0) for local government officials and staff, designed to work for **any US municipality**. Built by Dustin Good, sitting Elgin Illinois Councilmember and creator of CivicAide, PolicyAide, and CivicWork.Ai.
 
-It provides automated workflows for ordinance analysis, meeting preparation, policy research, budget review, constituent communications, agenda synthesis, intergovernmental scanning, vendor evaluation, meeting close-out, PolicyAide sync, and skill quality review.
+It provides automated workflows for ordinance analysis, meeting preparation, policy research, budget review, constituent communications, agenda synthesis, intergovernmental scanning, vendor evaluation, meeting close-out, PolicyAide sync, skill quality review, and watcher workflows for agendas, statehouse activity, vendor renewals, grants, and council follow-ups.
 
 **Key characteristic**: This is a prompt/workflow-based plugin using Markdown and JSON configuration — not compiled code. There are no build steps, tests, or linting tools.
 
@@ -15,11 +15,11 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
 ```
 .
 ├── agents/             # 3 utility agents (setup-municipality, setup-project, setup-official)
-├── skills/             # 22 skills: 11 workflow commands + 11 domain expertise modules
+├── skills/             # 27 skills: 16 workflow commands + 11 domain expertise modules
 ├── state-references/   # State-specific statutory requirements (IL.md, etc.)
 ├── hooks/              # Event hooks (SessionStart config check)
 ├── scripts/            # Hook scripts (check-config.sh)
-├── .claude-plugin/     # Plugin metadata (plugin.json v0.5.0)
+├── .claude-plugin/     # Plugin metadata (plugin.json v0.6.0)
 ├── .claude/            # Local Claude settings (enabled MCP servers)
 ├── .mcp.json           # MCP server connections (municipal-code, document-management)
 ├── municipal.local.md  # Municipality-specific configuration (template — customize per deployment)
@@ -37,7 +37,7 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
 
 **Skills** (`/skills/*/SKILL.md`) form two tiers of domain expertise, all in the same directory format:
 
-1. **Workflow Skills** (11): User-facing workflows invoked via `/municipal-governance:*`. Each workflow skill:
+1. **Workflow Skills** (16): User-facing workflows invoked via `/municipal-governance:*`. Each workflow skill:
    - **Scopes the work first** — brief questions to focus depth and identify what the user actually needs (see "Scope" step)
    - Loads `municipal.local.md` configuration
    - References specific domain skills via `## Skills Referenced` section
@@ -54,7 +54,7 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
    - `## Municipal Configuration` listing relevant `municipal.local.md` fields
    - Three domain skills include structured output templates: `policy-evaluation`, `public-finance`, `municipal-code-analysis`
 
-### Workflow Skills (11)
+### Workflow Skills (16)
 
 | Skill | Purpose |
 |-------|---------|
@@ -69,6 +69,11 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
 | `sync-to-policyaide` | Sync profile, municipality context, and standing docs to PolicyAide |
 | `meeting-close-out` | Capture meeting outcomes, votes, follow-ups, and briefing-book updates |
 | `skill-qa` | Review skills for provenance, analysis boundaries, freshness, and connector safety |
+| `agenda-watcher` | Monitor agenda postings, packets, addenda, and agenda changes |
+| `statehouse-monitor` | Track legislative, agency, mandate, preemption, and funding developments |
+| `vendor-renewal-watcher` | Watch vendor renewal windows, auto-renewals, escalation, and data-export deadlines |
+| `grant-radar` | Monitor grant opportunities, NOFOs, deadlines, eligibility, and strategic fit |
+| `council-follow-up-tracker` | Track staff directives, deferred items, promised reports, and open follow-ups |
 
 ### Domain Skills (11)
 
@@ -89,7 +94,7 @@ It provides automated workflows for ordinance analysis, meeting preparation, pol
 ### Data Flow
 
 ```
-User command → Scope the work (brief user questions) → Load municipal.local.md → Load state reference (state-references/{state}.md) → Retrieve documents (upload or MCP) → Reference skills → Structured Markdown output with confidence/provenance indicators
+User command/watch run → Scope the work (brief user questions) → Load municipal.local.md → Load state reference (state-references/{state}.md) → Retrieve documents (upload or MCP) → Reference skills → Structured Markdown output with confidence/provenance indicators
 ```
 
 ### MCP Server Connections

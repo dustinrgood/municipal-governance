@@ -54,10 +54,12 @@ Create:
 ├── documents/
 │   ├── agendas/
 │   ├── budgets/
+│   ├── contracts/
 │   ├── ordinances/
 │   └── plans/
 ├── meeting-notes/
-└── research/
+├── research/
+└── watchers/
 ```
 
 ### Step 4: Generate Project CLAUDE.md
@@ -88,6 +90,7 @@ When using `/municipal-governance:*` commands in this project:
 3. Reference `documents/plans/` for comprehensive plan and strategic plan alignment checks
 4. Save policy research outputs to `research/` for future reference
 5. After meetings, use `/municipal-governance:meeting-close-out` and save results to `meeting-notes/`
+6. Store watcher baselines and run logs in `watchers/` only after reviewing proposed updates
 
 ## Workspace
 
@@ -95,10 +98,12 @@ When using `/municipal-governance:*` commands in this project:
 |--------|---------------|
 | `documents/agendas/` | Agenda packets for meeting-prep and agenda-synthesis |
 | `documents/budgets/` | Budget documents, AFRs, financial reports |
+| `documents/contracts/` | Vendor contracts, amendments, renewal notices, and RFP materials |
 | `documents/ordinances/` | Proposed ordinances under review |
 | `documents/plans/` | Comprehensive plan, strategic plan, CIP |
 | `meeting-notes/` | Post-meeting summaries, decisions, action items |
 | `research/` | Saved policy research for future reference |
+| `watchers/` | Agenda, statehouse, vendor renewal, grant, and council follow-up watcher memory |
 
 ## Key Contacts
 

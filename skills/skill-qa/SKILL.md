@@ -67,7 +67,7 @@ For each `SKILL.md`, check:
 | Analysis boundaries | Does high-stakes advice include a specific single-instance verification disclosure? |
 | Connector behavior | Are active connectors named accurately, with fallback behavior when unavailable? |
 | External actions | Do sync/send/post/link actions require user confirmation before data leaves the workspace? |
-| Public-record-adjacent output | Do meeting, agenda, constituent, and briefing-book workflows avoid confidential, privileged, campaign, and private constituent material unless explicitly separated? |
+| Public-record-adjacent output | Do meeting, agenda, watcher, constituent, and briefing-book workflows avoid confidential, privileged, campaign, and private constituent material unless explicitly separated? |
 | Cross-references | Are `## Skills Referenced` and `## Related Skills` present where expected? |
 | Output shape | Is the template concise, skimmable, and explicit about omitting unavailable sections? |
 
@@ -137,6 +137,7 @@ If no material issues are found, say so plainly and list any residual review gap
 - `analyze-ordinance` — legal/code-conflict workflows need provenance and verification gates
 - `sync-to-policyaide` — external sync actions need confirmation and data minimization
 - `meeting-close-out` — institutional-memory workflows need careful distinction between records and observations
+- `agenda-watcher` — watcher outputs need source traceability, fallback behavior, and careful public-record boundaries
 
 ## Notes
 

@@ -16,6 +16,7 @@ This plugin automates common workflows for municipal elected officials and staff
 - **Vendor Evaluation**: Analyze vendor contracts, decompose deliverables, assess lock-in, and produce build feasibility specs
 - **Meeting Close-Out**: Capture votes, follow-ups, and surprises after meetings for persistent institutional memory
 - **PolicyAide Sync**: Send local profile/context summaries to PolicyAide for deeper multi-agent research
+- **Watcher Workflows**: Monitor agendas, statehouse activity, vendor renewals, grants, and council follow-ups
 
 ## Quick Start
 
@@ -50,10 +51,12 @@ This plugin automates common workflows for municipal elected officials and staff
    ├── documents/
    │   ├── agendas/           ← Drop agenda packets here
    │   ├── budgets/           ← Budget documents, AFRs
+   │   ├── contracts/         ← Vendor contracts and renewal notices
    │   ├── ordinances/        ← Proposed ordinances under review
    │   └── plans/             ← Comprehensive plan, strategic plan, CIP
    ├── meeting-notes/         ← Post-meeting summaries and action items
-   └── research/              ← Saved policy research
+   ├── research/              ← Saved policy research
+   └── watchers/              ← Local watcher memory and status logs
    ```
 
    Then point Cowork to it: **"Work in a project" → "+" → "Use an existing folder"** → select the created folder.
@@ -84,6 +87,11 @@ The plugin provides analytical tools. The project workspace provides **persisten
 | `/municipal-governance:meeting-close-out` | Record meeting outcomes, follow-ups, and briefing-book updates |
 | `/municipal-governance:sync-to-policyaide` | Sync municipality, official profile, and standing document summaries to PolicyAide |
 | `/municipal-governance:skill-qa` | Review plugin skills for provenance, trust gates, stale references, and connector assumptions |
+| `/municipal-governance:agenda-watcher` | Monitor upcoming agendas, packets, addenda, and agenda changes |
+| `/municipal-governance:statehouse-monitor` | Track state/federal bills, mandates, preemption risks, and agency updates |
+| `/municipal-governance:vendor-renewal-watcher` | Watch contract renewals, auto-renewal windows, escalation, and data-export deadlines |
+| `/municipal-governance:grant-radar` | Monitor grants, NOFOs, deadlines, eligibility, match, and strategic fit |
+| `/municipal-governance:council-follow-up-tracker` | Track staff directives, deferred items, promised reports, and open meeting follow-ups |
 
 ## Configuration
 
