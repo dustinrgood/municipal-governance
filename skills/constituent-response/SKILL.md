@@ -270,6 +270,7 @@ attend council meeting / etc.].
 - Use plain language, not bureaucratic jargon
 - Proofread carefully - this represents the municipality
 - Flag politically sensitive responses for review
+- This skill produces a draft only. Never transmit a response through a connected email, messaging, CRM, or communication connector without showing the final text and getting explicit user confirmation in the current session.
 - Treat constituent communications and draft replies as public-record-adjacent. Avoid unnecessary private constituent details, closed-session material, privileged legal advice, campaign strategy, or electioneering content in official-government responses.
 - **FOIA requests**: If a constituent message is actually a public records request (FOIA), do not attempt a substantive response. Instead, acknowledge receipt and route to the designated FOIA officer listed in `municipal.local.md`. FOIA requests have legal deadlines and procedures that must be followed.
 - **Threatening or abusive communications**: If a message contains threats of violence, route to law enforcement immediately. For abusive but non-threatening messages, respond briefly and professionally, acknowledge any legitimate underlying concern, and do not engage with the hostile tone. If harassment is persistent, consult the municipal attorney about appropriate steps.

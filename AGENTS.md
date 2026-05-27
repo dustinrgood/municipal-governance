@@ -252,7 +252,7 @@ Layer 3: municipal.local.md      — Municipality-specific config. Unique per de
 
 ### plugin.json `author` field must be an object
 
-Codex Desktop strictly validates the plugin.json schema. The `author` field **must** be an object with a `name` property — a plain string will fail validation silently and crash the entire Plugins management page (not just this plugin, but all plugins).
+Claude Desktop / Cowork plugin validation expects the `author` field to be an object with a `name` property. A plain string can fail validation and break plugin management.
 
 ```json
 "author": "CivicWork"              // WRONG — breaks the Plugins page
@@ -261,13 +261,13 @@ Codex Desktop strictly validates the plugin.json schema. The `author` field **mu
 
 ### MCP placeholder entries propagate and persist
 
-When a plugin with `.mcp.json` entries is uploaded to Codex Desktop, those entries get written to three places:
+When a plugin with `.mcp.json` entries is uploaded to Claude Desktop / Cowork, those entries can be written to multiple places:
 
-1. The global config (`~/Library/Application Support/Codex/claude_desktop_config.json`) — prefixed as `municipal-governance:<name>`
+1. The global Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`) — prefixed as `municipal-governance:<name>`
 2. The marketplace copy inside `local-agent-mode-sessions/.../cowork_plugins/marketplaces/local-desktop-app-uploads/municipal-governance/.mcp.json`
 3. The cache copy inside `local-agent-mode-sessions/.../cowork_plugins/cache/local-desktop-app-uploads/municipal-governance/<version>/.mcp.json`
 
-If the project `.mcp.json` is later cleaned, the uploaded copies and global config are **not** updated automatically. Stale entries will cause persistent error banners in Codex Desktop. To fully remove them, all three locations must be cleaned manually.
+If the project `.mcp.json` is later cleaned, the uploaded copies and global config are **not** updated automatically. Stale entries can cause persistent error banners in the host app. To fully remove them, all three locations must be cleaned manually.
 
 ### .mcp.json contains machine-specific paths and optional HTTP connectors
 

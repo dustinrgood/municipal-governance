@@ -37,13 +37,17 @@ If the user wants deep analysis of specific items, suggest escalating to `meetin
 
 Load the municipality's configuration from `municipal.local.md`. Use council structure, meeting schedule, policy priorities, and fiscal thresholds to contextualize the synthesis. If not found, proceed with general analysis.
 
+For any fiscal total, code-change flag, public-hearing count, or "required by statute/code" field, cite the agenda packet or supplied materials as the source. If the packet does not state the amount or requirement, mark the field as needing verification rather than inferring it. Do not imply staff reports, code provisions, or agenda-system records were independently reviewed unless they were actually retrieved.
+
 ### 1. Document Intake
 
 Accept agenda packet in various formats:
 - Single PDF (most common)
 - Multiple PDFs
 - Word documents
-- Links to online agenda system
+- Links to online agenda system or `document-management` when authenticated
+
+If a connector or link is unavailable, work only from the provided packet, uploaded materials, and user-provided context. Clearly list missing materials when they limit the synthesis.
 
 ### 2. Parse Document Structure
 
@@ -77,6 +81,8 @@ Automatically classify items:
 - Personnel matters
 - Controversial topics (detected from context)
 
+Classifications are quick-screening signals, not legal conclusions. Tag fiscal figures, code-change classifications, public-hearing classifications, and procedural requirements with confidence/provenance in the output.
+
 🟡 **Standard Review**
 - Moderate fiscal items
 - Policy decisions
@@ -108,15 +114,20 @@ Automatically classify items:
 |--------|-------|
 | Total Items | [X] |
 | Action Items | [X] |
-| Public Hearings | [X] |
+| Public Hearings | [X] *(Confidence: [High/Medium/Low]; provenance: [packet / verify])* |
 | Consent Items | [X] |
 | Informational | [X] |
-| Est. Meeting Length | [X hours] |
+| Est. Meeting Length | [X hours] *(Confidence: [High/Medium/Low]; provenance: [agenda timing / model inference])* |
 
 ### Fiscal Summary
-- Total new spending: $[X]
-- Largest single item: $[X] ([Item name])
-- Revenue items: $[X]
+- Total new spending: $[X] *(Confidence: [High/Medium/Low]; provenance: [packet pages / partial sum / verify])*
+- Largest single item: $[X] ([Item name]) *(Confidence: [High/Medium/Low]; provenance: [packet page])*
+- Revenue items: $[X] *(Confidence: [High/Medium/Low]; provenance: [packet pages / partial sum / verify])*
+
+### Source Notes
+- Packet source: [uploaded packet / document-management / agenda link]
+- Materials reviewed: [agenda only / staff reports / attachments]
+- Missing or unverified materials: [list or "none identified"]
 
 ### Items Flagged for Attention
 1. 🔴 [Item X]: [Brief reason]
@@ -140,7 +151,7 @@ Automatically classify items:
 
 ### [Item #]: [Title]
 **Purpose**: [What the hearing is for]
-**Required by**: [Statute/code]
+**Required by**: [Statute/code, if stated in packet] *(Confidence: [High/Medium/Low]; provenance: [packet / verify])*
 **Staff Rec**: [Recommendation]
 **Key Issue**: [One sentence summary]
 📄 Staff report: p. [X]
@@ -152,7 +163,7 @@ Automatically classify items:
 ### [Item #]: [Title] 🔴
 **The Ask**: [What council is being asked to do]
 **Staff Rec**: [Approve/Deny/etc.]
-**Fiscal**: $[X] ([source])
+**Fiscal**: $[X] *(Confidence: [High/Medium/Low]; provenance: [source])*
 **Key Points**:
 - [Point 1]
 - [Point 2]
@@ -185,7 +196,7 @@ Automatically classify items:
 ---
 
 *Synthesis generated [timestamp].
-Review full packet for complete information.*
+Review full packet for complete information. Verify legal/procedural requirements before relying on them for council action.*
 ```
 
 ## Variations
@@ -218,6 +229,10 @@ When user specifies particular items:
 ## Notes
 
 - For deeper analysis of flagged items, apply the Standard Deliberation Question Framework from the `meeting-prep` skill (fiscal impact, legal/compliance, policy alignment, community impact, alternatives, timeline, risk)
+- Agenda synthesis is packet-first and fast. Do not assert statutory requirements, code conflicts, staff recommendations, or fiscal totals unless they appear in the packet or supplied materials; otherwise mark them as needing verification.
+- If a fiscal total is summed from only some items, label it as a partial total and identify what is excluded.
+- Treat agenda syntheses as potentially public-record-adjacent. Keep campaign strategy, personal political notes, closed-session substance, privileged legal advice, and private constituent details out of official-government output unless the user explicitly requests a separate non-governmental note.
+- For public hearings, record what the packet says is required and cite the source. If the packet is silent, use "verify statute/code requirement" instead of naming a requirement from inference.
 - Prioritize speed for standard synthesis
 - Escalate to meeting-prep for comprehensive needs
 - Always provide page references

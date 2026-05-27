@@ -284,6 +284,7 @@ Produce comprehensive briefing document. For decision-relevant claims, include c
 ### Executive Session
 - Scheduled: [yes/no]
 - Topics: [if scheduled]
+- Record only that an executive session is scheduled and its stated statutory purpose. Do not transcribe closed-session deliberations, privileged legal advice, or confidential personnel/real-estate details into the briefing.
 
 ---
 
